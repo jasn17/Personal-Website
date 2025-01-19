@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        /* CSS PROPERTIES */
+        body {
+            font-family: 'Heebo', 'Times New Roman', Times, serif;
+            background: linear-gradient(150deg, #000827, #000827, #000827, #071038, #233460, #87cdee, #233460, #071038, #000827, #000827, #000827);
+            background-size: 100% 100%;
+            background-repeat: repeat;
+            height: 100vh;
+            margin: 0;
+        }
+        h3 {
+            font-weight: 200;
+        }
+        .page-1 {
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+            grid-template-columns: 1fr;
+            height: 100vh;
+            width: 100vw;
+        }
+        .paragraph-1 {
+            font-size: 1.1em;
+            font-weight: 300;
+            color: #ffffff;
+        }
+        .text-1 {
+            font-size: 1.5em;
+            font-weight: 500;
+            color: #00ce34;
+            text-align: center;
+        }
+        .box {
+            width: 100vw;
+        }
+        .text-2 {
+            text-align: center;
+            font-weight: 400;
+            font-size: 1.5em;
+            color: white;
+        }
+        #specific-1 {
+            font-size: 1.1em;
+            font-weight: 300;
+            color: #ff0000;
+        }
+        p, h2 {
+            padding-top: 0.5em;
+        }
+        #bgdemo {
+            background-color: green;
+            opacity: 0.3;
+            background-image: url("img/sea.png");
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+        }
+        #borderdemo {
+            border: 2px solid #ff6347;
+            margin-top: 1em;
+            border-style: dashed;
+        }
+        /* This is a comment */
+    </style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <link rel="icon" href="img/jasnlogo.png" alt="logo" />
+        <title> Official JL</title>
+    </head>
+    <body>
+        <div class = "page-1">
+            <div class="box">
+                <p class="text-1">CSS Syntax<br>This text is centered and in green</p>
+            </div>
+            <div class="box">
+                <p class="text-2">CSS Selector</p>
+                <p id="specific-1"> This text is styled using an ID selector</p>
+                <h2> This text is tyled using an element selector</h2>
+                <p class="paragraph-1">This text is styled using a class selector</p>
+                <p class="paragraph-1">This text is styled with a grouping selector with h2</p>
+            </div>
+            <div class="box">
+                <p class="text-2">How to add CSS</p>
+                <h1 style="color:blue;text-align:center;">This was styled using an inlined CSS</h1>
+                <p class="paragraph-1">Internal CSS means the CSS properties are in the same file as HTML</p>
+                <p class="paragraph-1">External CSS means the CSS properties are in separate files and must be linked with a < link > tag</p>
+            </div>
+            <div class="box">
+                <p class="paragraph-1">How to add Commments</p>
+                <p class="paragraph-1">In CSS comments are added with /* and */</p>
+            </div>
+        </div>
+        <div class = "page-1">
+            <div class="box">
+                <p class="paragraph-1">CSS Colors</p>
+                <h1 style="background-color:DodgerBlue; border:2px solid #ff6347; margin-top: 1em;">Colors can be specified by name or color value</h1>
+            </div>
+            <div class="box">
+                <p class="paragraph-1">RGB Values</p>
+                <p class="paragraph-1" style="color:rgb(255,0,0,0.5);font-weight:500;">RGB values go from 0 to 255 and opacity values go from 0 to 1</p>
+                <p class="paragraph-1"> hsl(x, y, z) means hue, saturation, and lightness</p>
+                <p class="paragraph-1"> And #rrggbb are separated by hex values</p>
+            </div>
+            <div class="box" id="bgdemo">
+                <p class="paragraph-1">CSS Backgrounds</p>
+                
+            </div>
+            <div class="box" id="borderdemo">
+                <p class="paragraph-1">CSS Borders</p>
+                <p class="paragraph-1" style="background-color:burlywood; border-width:medium; border-style:solid; border-color:white; border-bottom-style:dotted; border-radius: 5px;">Borders can be styled with color, width, and style</p>
+                <p class="paragraph-1" style="border: 2px solid red;"> There is a shortcut for adjusting border properties</p>
+            </div>
+        </div>
+        <div class="page-1">
+            <div class="box">
+                <p class="paragraph-1">CSS Margins</p>
+                <p class="paragraph-1" style="color:black; margin: 25px 50px 75px 100px; background-color:antiquewhite;">Margins are the space between the border and the content</p>
+            </div>
+            <div class="box">
+                <p class="paragraph-1">CSS Padding</p>
+                <p class="paragraph-1" style="color:black; margin: 25px 50px 75px 100px; background-color:antiquewhite;padding: 10px 10px 10px 10px;">Padding are space around the element's borders</p>
+            </div>
+            <div class="box">
+                <p class="paragraph-1">CSS Height + Width</p>
+                <div style="width:auto; height:50px; background-color: aquamarine;">
+                    <p>
+                        Height and width properties are used to set the height and width of an element.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+
+
+    </body>
+</html>
