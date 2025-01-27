@@ -20,18 +20,6 @@
             padding: 1rem 0;
             text-align: center;
         }
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
         main {
             display: flex;
             margin: 20px;
@@ -60,23 +48,127 @@
             max-width: 100%;
             height: auto;
         }
+            /* Navbar Styles */
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4.5em;
+    background-color: #282424;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+.navbar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+}
+
+.navbar-item {
+    position: relative;
+}
+
+.navbar a {
+    display: block;
+    padding: 1.2em 2em;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+    background-color: #444;
+}
+
+/* Dropdown Menu */
+.nav-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 200px;  /* Adjust the width for proper alignment */
+    background: #333;
+    list-style: none;
+    padding: 0;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+}
+
+.nav-dropdown-item a {
+    padding: 12px 20px;
+    display: block;
+    text-align: left;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-dropdown-item a:hover {
+    background-color: #555;
+}
+
+/* Show dropdown on hover */
+.navbar-item:hover .nav-dropdown {
+    display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        height: auto;
+    }
+
+    .navbar-menu {
+        flex-direction: column;
+    }
+
+    .navbar a {
+        padding: 1em;
+    }
+
+    .nav-dropdown {
+        width: 100%;
+        position: static;
+    }
+}
     </style>
 </head>
 <body>
-    <header>
+    <!--NAVBAR-->
+    <nav class="navbar">
+        <ul class="navbar-menu">
+            <li class="navbar-item">
+                <a href="index.html"><i class="fa fa-home"></i> Home</a>
+            </li>
+            <li class="navbar-item">
+                <a href="#"><i class="fa fa-paper-plane"></i> Group Assignments</a>
+                <ul class="nav-dropdown">
+                    <li class="nav-dropdown-item"><a href="GroupCSS1.html">How-to CSS</a></li>
+                    <li class="nav-dropdown-item"><a href="Prog03/page1.html">Exploring Architecture</a></li>
+                    <li class="nav-dropdown-item"><a href="Prog03/page2.html">Drawing in a Black and White World</a></li>
+                    <li class="nav-dropdown-item"><a href="Prog03/page3.html">Modern Shakespeare of Music</a></li>
+                    <li class="nav-dropdown-item"><a href="Basic-ff-hybrid-layout/layout.html">ACME Widgets</a></li>
+                </ul>
+            </li>
+            <li class="navbar-item">
+                <a href="#"><i class="fa fa-image"></i> Image Gallery</a>
+                <ul class="nav-dropdown">
+                    <li class="nav-dropdown-item"><a href="img-gallery/yegallery.html">Kanye West Album Gallery</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <header style="padding-top: 6em;">
         <h1 style="font-family:Times New Roman, Times, serif;">Exploring Architecture</h1>
-        <nav>
-            <ul>
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
-                <li> 
-                    <a href="architecture.html">Architecture</a>    
-                </li>
-                <li> <a href="mailto:info@example.com">Contact</a>
-                </li>
-            </ul>
-        </nav>
     </header>
 
     <main>
