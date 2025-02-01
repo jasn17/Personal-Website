@@ -7,42 +7,20 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">    
         <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
         <link rel="icon" href="img/jasnlogo.png" alt="logo" />
-        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="styles/index.css">
+        <link rel="stylesheet" href="styles/navbar.css">
         <title> Official JL</title>
     </head>
     <body>
-        <!--NAVBAR-->
-        <nav class="navbar">
-            <ul class="navbar-menu">
-                <li class="navbar-item">
-                    <a href="index.html"><i class="fa fa-home"></i> Home</a>
-                </li>
-                <li class="navbar-item">
-                    <a href="#"><i class="fa fa-paper-plane"></i> Group Assignments</a>
-                    <ul class="nav-dropdown">
-                        <li class="nav-dropdown-item"><a href="GroupCSS1.html">How-to CSS</a></li>
-                        <li class="nav-dropdown-item"><a href="Prog03/page1.html">Exploring Architecture</a></li>
-                        <li class="nav-dropdown-item"><a href="Prog03/page2.html">Drawing in a Black and White World</a></li>
-                        <li class="nav-dropdown-item"><a href="Prog03/page3.html">Modern Shakespeare of Music</a></li>
-                        <li class="nav-dropdown-item"><a href="Basic-ff-hybrid-layout/layout.html">ACME Widgets</a></li>
-                    </ul>
-                </li>
-                <li class="navbar-item">
-                    <a href="#"><i class="fa fa-image"></i> Image Gallery</a>
-                    <ul class="nav-dropdown">
-                        <li class="nav-dropdown-item"><a href="img-gallery/yegallery.html">Kanye West Album Gallery</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        
+        <?php include 'navbar.html'; ?>
+
         <!--HERO-->
         <header class="hero-section">
             <div class="hero-content">
                 <img src="img/headshot.png" alt="me" class="hero-headshot">
                 <h1 class="hero-title">Welcome to My Website</h1>
                 <p class="hero-description">
-                    My name is <strong>Jason Lin</strong>. This is my website for <strong>CPSC 3750 Spring 2025</strong>.
+                    Hi I'm <strong>Jason</strong>. This is my website for <strong>CPSC 3750 Spring 2025</strong>.
                     <br>My interests include <strong>politics</strong>, <strong>architecture</strong>, and <strong>music</strong>.
                 </p>
                 <a href="#about" class="btn btn-primary">Learn More</a>

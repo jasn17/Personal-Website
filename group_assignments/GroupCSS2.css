@@ -12,7 +12,7 @@ body {
 
 /* Navbar Styles */
 .navbar {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
@@ -49,7 +49,6 @@ body {
     background-color: #444;
 }
 
-/* Dropdown Menu */
 .nav-dropdown {
     display: none;
     position: absolute;
@@ -77,10 +76,11 @@ body {
     background-color: #555;
 }
 
-/* Show dropdown on hover */
 .navbar-item:hover .nav-dropdown {
     display: block;
 }
+
+/*_____________________________________*/
 
 /* Kanye Album Gallery */
 .gallery-container {
