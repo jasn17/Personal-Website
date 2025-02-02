@@ -1,8 +1,8 @@
-// Create a <style> element to inject keyframes dynamically
+console.log("app.js loaded");
+
 const styleSheet = document.createElement('style');
 styleSheet.type = 'text/css';
 
-// Define keyframe animations
 const keyframes = `
     @keyframes fadeIn {
         from {
@@ -26,18 +26,18 @@ document.head.appendChild(styleSheet);
 
 document.addEventListener('DOMContentLoaded', () => {
     fetch('navbar.html')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network error: ' + response.statusText);
-        }
-        return response.text();
-      })
-      .then(html => {
-        document.getElementById('navbar-placeholder').innerHTML = html;
-      })
-      .catch(error => {
-        console.error('Error loading navbar:', error);
-      });
+        .then(response => {
+            if (!response.ok) {
+            throw new Error('Network error: ' + response.statusText);
+            }
+            return response.text();
+        })
+        .then(html => {
+            document.getElementById('navbar-placeholder').innerHTML = html;
+        })
+        .catch(error => {
+            console.error('Error loading navbar:', error);
+        });
 
     fetch('footer.html')
       .then(response => {

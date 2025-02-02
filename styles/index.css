@@ -1,4 +1,9 @@
 /* General Styles */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 body {
     font-family: 'Heebo', 'Times New Roman', Times, serif;
     margin: 0;
