@@ -1,0 +1,31 @@
+body { 
+    font-family: Arial, sans-serif; 
+    background-color: black; 
+    color: white; text-align: 
+    center; 
+    margin: 0; padding: 0;
+}
+
+header, footer { 
+    background: #fffc64; 
+    padding: 2em; 
+    font-weight: bold; 
+    color:#333
+}
+.album-list { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 2vw; 
+}
+.album { 
+    padding: 1em; 
+    background: #333; 
+    border-radius: 0.5em; 
+}
+.images img { 
+    width: 20vw; 
+    height: auto; 
+    margin: 1em; 
+    border-radius: 1em; 
+}
