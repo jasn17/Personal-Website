@@ -1,0 +1,37 @@
+html body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.button-parent {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    margin: 10px;
+    min-height: 85vh;
+}
+.red-section, .blue-section, .green-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.red-button, .blue-button, .green-button {
+    border-radius: 0.5em;
+    color: white;
+    font-weight: 700;
+    font-size: large;
+    background-color: black;
+    height: 5em;
+    width: 20em;
+}
+.red-button:hover, .blue-button:hover, .green-button:hover {
+    color: black;
+    background-color: white;
+}
+
+.button-click-count, .button-hover-count {
+    margin: 1em 0;
+    font-size: large;
+}

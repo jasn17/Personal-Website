@@ -1,4 +1,58 @@
-<script src="/scripts/app.js"></script>
+<!DOCTYPE html> 
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">    
+        <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <link rel="icon" href="img/jasnlogo.png" alt="logo" />
+        <link rel="stylesheet" href="button.css">
+        <link rel="stylesheet" href="../../styles/navbar.css">
+        <link rel="stylesheet" href="../../styles/footer.css">
+        <script src="button.js"></script>
+    </head>
+    <body>
+        <div id="navbar-container"></div>
+        <script>
+            fetch('../../navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading navbar:', error));
+        </script>
 
+        <div class="button-parent">
+            <div class="red-section">
+                <button class="red-button">RED</button>
+                <p class="button-click-count">RED Click Count: </p>
+                <p class="button-hover-count">RED Hover Count: </p>
+            </div>
+            <div class="green-section">
+                <button class="green-button">GREEN</button>
+                <p class="button-click-count">GREEN Click Count: </p>
+                <p class="button-hover-count">GREEN Hover Count: </p>
+            </div>
+            <div class="blue-section">
+                <button class="blue-button">BLUE</button>
+                <p class="button-click-count">BLUE Click Count: </p>
+                <p class="button-hover-count">BLUE Hover Count: </p>
+            </div>
+        </div>
+        
+        <div id="footer-container"></div>
+        <script>
+            fetch('../../footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading navbar:', error));
+        </script>
+    </body>
+</html>
+
+<script src="../../scripts/app.js"></script>
 <div id="navbar-placeholder"></div>
 <div id="footer-placeholder"></div>
