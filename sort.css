@@ -1,0 +1,18 @@
+/* General Styles */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: 'Heebo', 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background: #F9F6EE;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.theform {
+    min-height: 100vp;
+}
