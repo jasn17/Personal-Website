@@ -49,7 +49,7 @@ function createButton() {
 
 function toggleMovement() {
     const moveButton = document.getElementById('moveButton');
-    isMoving = !isMoving;
+    isMoving = !isMoving; 
     
     if (isMoving) {
         moveButton.textContent = 'PAUSE';
@@ -93,4 +93,19 @@ function moveButton(button, movement) {
     
     button.style.left = Math.max(0, Math.min(newX, viewArea.width - rect.width)) + 'px';
     button.style.top = Math.max(0, Math.min(newY, viewArea.height - rect.height)) + 'px';
+}
+
+function clearAll() {
+    totalSum = 0;
+    document.getElementById('totalSum').textContent = totalSum;
+    
+    const viewArea = document.querySelector('.view-area');
+    buttons.forEach((_, button) => viewArea.removeChild(button));
+    buttons.clear();
+    
+    stopMovement();
+    intervalIds = [];
+    
+    isMoving = false;
+    document.getElementById('moveButton').textContent = 'MOVE';
 }

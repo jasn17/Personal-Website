@@ -58,6 +58,17 @@ body {
     width: 100px;
 }
 
+button {
+    padding: 0.5em 1em;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button:hover {
+    background-color: #ddd;
+}
+
 .total-display {
     margin-left: auto;
     font-weight: bold;
