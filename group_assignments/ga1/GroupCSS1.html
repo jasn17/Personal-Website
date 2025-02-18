@@ -70,13 +70,13 @@
         <link rel="icon" href="img/jasnlogo.png" alt="logo" />
         <link rel="stylesheet" href="../styles/navbar.css">
         <title> Official JL</title>
-        <link rel="stylesheet" href="../styles/navbar.css">
-        <link rel="stylesheet" href="../styles/footer.css">
+        <link rel="stylesheet" href="../../styles/navbar.css">
+        <link rel="stylesheet" href="../../styles/footer.css">
     </head>
     <body>
         <div id="navbar-container"></div>
         <script>
-            fetch('../navbar.html')
+            fetch('../../navbar.html')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('navbar-container').innerHTML = data;
@@ -148,7 +148,7 @@
         
         <div id="footer-container"></div>
     <script>
-        fetch('../footer.html')
+        fetch('../../footer.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('footer-container').innerHTML = data;

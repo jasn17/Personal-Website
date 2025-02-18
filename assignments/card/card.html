@@ -8,12 +8,13 @@
         <link rel="icon" href="img/jasnlogo.png" alt="logo" />
         <link rel="stylesheet" href="../../styles/footer.css">
         <link rel="stylesheet" href="../../styles/navbar.css">
+        <link rel="stylesheet" href="card.css">
         <title> Official JL</title>
     </head>
     <body>
         <div id="navbar-container"></div>
         <script>
-            fetch('navbar.html')
+            fetch('../../navbar.html')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('navbar-container').innerHTML = data;
@@ -21,16 +22,40 @@
                 .catch(error => console.error('Error loading navbar:', error));
         </script>
 
+        <div class="main-box">
+            <div class="left-box">
+                <h2>Information Form</h2>
+                <form class="business-card-form">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name"><br><br>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email"><br><br>
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address"><br><br>
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" name="phone"><br><br>
+                    <label for="birthdate">Birthdate:</label>
+                    <input type="date" id="birthdate" name="birthdate"><br><br>
+                    <input type="submit" value="Submit">
+                </form>
+
+            </div>
+            <div class="right-box">
+               <h2>Business Cards</h2>
+                <div class="names-list"></div>
+            </div>
+        </div>
         
         <div id="footer-container"></div>
         <script>
-            fetch('footer.html')
+            fetch('../../footer.html')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('footer-container').innerHTML = data;
                 })
                 .catch(error => console.error('Error loading footer:', error));
         </script>
+        <script src="card.js"></script>
     </body>
 </html>
 
