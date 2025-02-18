@@ -11,7 +11,10 @@ function displayCards() {
    // Clear previous content and add title
    cardsContainer.innerHTML = "<h2>Business Cards</h2>";
    
+   // Loop through each card in the storedCards array and create a card element for each
    storedCards.forEach(card => {
+
+      // Create a card element with the card's information
        let cardElement = `
            <div class="card">
                <strong>Name: </strong>${card.name}<br>
@@ -21,22 +24,10 @@ function displayCards() {
                <strong>Birthdate: </strong><input type="date" value="${card.birthdate}" readonly><hr>
            </div>
        `;
+
+       // Add the card element to the cards container with every iteration
        cardsContainer.innerHTML += cardElement;
    });
-}
-
-// Function to retrieve and display names from stored business cards
-function displayNamesList() {
-   let storedCards = JSON.parse(localStorage.getItem("businessCards")) || [];
-   let namesListContainer = document.querySelector(".names-list");
-   
-   if (!namesListContainer) return;
-   
-   namesListContainer.innerHTML = "<h2>Names Entered:</h2><ol>";
-   storedCards.forEach(card => {
-       namesListContainer.innerHTML += `<li>${card.name}</li>`;
-   });
-   namesListContainer.innerHTML += "</ol>";
 }
 
 // Function to handle form submission
@@ -68,6 +59,5 @@ function handleFormSubmit(event) {
 // Run functions on window load
 window.onload = function () {
    displayCards();
-   displayNamesList();
    document.querySelector("form").addEventListener("submit", handleFormSubmit);
 };
