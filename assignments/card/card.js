@@ -34,6 +34,7 @@ function displayCards() {
 function handleFormSubmit(event) {
    event.preventDefault();
    
+   // Get the values from the form fields
    let name = document.getElementById("name").value;
    let email = document.getElementById("email").value;
    let address = document.getElementById("address").value;
