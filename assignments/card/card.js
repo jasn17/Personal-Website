@@ -1,8 +1,11 @@
-// Function to display business cards in the right-box
+// function to display business cards from local storage
 function displayCards() {
+   // Retrieve stored business cards from local storage or create an empty array if it is empty
    let storedCards = JSON.parse(localStorage.getItem("businessCards")) || [];
+   // Get the container where the cards will be displayed, targets right-box div
    let cardsContainer = document.querySelector(".right-box");
    
+   // If the container does not exist, return so the function does not break
    if (!cardsContainer) return;
    
    // Clear previous content and add title
