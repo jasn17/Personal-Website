@@ -23,8 +23,8 @@ function generateLists() {
     const limit = parseInt(numInput);
 
     // clear prev results
-    document.getElementById("primeList").value = "";
-    document.getElementById("nonPrimeList").value = "";
+    document.getElementById("primeList").innerHTML = "";
+    document.getElementById("nonPrimeList").innerHTML = "";
 
     // populate the list startin from 1 to the limit
     for (var i = 1; i <= limit; i++) {
