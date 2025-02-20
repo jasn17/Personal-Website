@@ -1,0 +1,65 @@
+<!--
+Jason Lin
+02/20/2025
+CPSC 3750
+Programming Exam 1
+Grade Level Completed: C, B, A, and Bonus 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">    
+        <link rel="icon" href="img/jasnlogo.png" alt="logo" />
+        <link rel="stylesheet" href="../../styles/footer.css">
+        <link rel="stylesheet" href="../../styles/navbar.css">
+        <link rel="stylesheet" href="prime.css">
+        <title>Official JL</title>
+    </head>
+    <body>
+        <div id="navbar-container"></div>
+        <script>
+            fetch('../../navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading navbar:', error));
+        </script>
+
+        <div class= "main-body">
+            <h1>Prime Number Classifier</h1>
+  
+            <label for="numberInput">Enter a number:</label>
+            <input type="number" id="numberInput" min="1" placeholder="e.g., 50">
+            <button id="startButton">START</button>
+            <button id="toggleTheme">Toggle Dark Mode</button>
+
+            <div class="lists-container">
+                <div class="list">
+                <h2>Prime Numbers</h2>
+                <ul id="primeList"></ul>
+                </div>
+                <div class="list">
+                <h2>Composite Numbers</h2>
+                <ul id="nonPrimeList"></ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="footer-container"></div>
+        <script>
+            fetch('../../footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading footer:', error));
+        </script>
+        <script src="prime.js"></script>
+    </body>
+</html>
