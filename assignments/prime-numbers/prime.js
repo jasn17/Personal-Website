@@ -5,92 +5,106 @@ CPSC 3750
 Programming Exam 1
 Grade Level Completed: C, B, A, and Bonus
 */
-// Create the click event listener for the startButton and toggleTheme element
-let isAscending = true;
+
 document.getElementById("startButton").addEventListener("click", generateLists);
 document.getElementById("toggleTheme").addEventListener("click", toggleDarkMode);
+document.getElementById("primeSortButton").addEventListener("click", toggleSortAll);
 
+// default to ascending order
+let isAscending = true;
+
+// function takes in an number and returns true if it is prime, false otherwise
 function isPrime(num) {
-    for(let i = 2, s = Math.sqrt(num); i <= s; i++) {
-        if(num % i === 0) return false;
+    if (num < 2) return false;
+    for (let i = 2, s = Math.sqrt(num); i <= s; i++) {
+        if (num % i === 0) return false;
     }
-    return num > 1;
-
+    return true;
 }
+
+// function generates prime and non-prime lists based on user input
+// primeList = list of prime numbers up to the limit
+// nonPrimeList = list of non-prime numbers up to the limit
 function generateLists() {
     const numInput = document.getElementById("numberInput").value;
     const limit = parseInt(numInput);
 
-    // clear prev results
+    if (isNaN(limit) || limit < 1) {
+        alert("Please enter a valid positive number.");
+        return;
+    }
+
+    // clear prev lists
     document.getElementById("primeList").innerHTML = "";
     document.getElementById("nonPrimeList").innerHTML = "";
 
-    // populate the list startin from 1 to the limit
-    for (var i = 1; i <= limit; i++) {
-        const li = document.createElement("li");
-        li.textContent = i;
+    let primes = [];
+    let nonPrimes = [];
 
-        // if i is a prime number then append it the the primeList string
+    for (let i = 1; i <= limit; i++) {
         if (isPrime(i)) {
-            document.getElementById("primeList").appendChild(li);
-        }
-        // otherwise append it to the nonPrimeList string
-        else {
-            document.getElementById("nonPrimeList").appendChild(li);
+            primes.push(i);
+        } else {
+            nonPrimes.push(i);
         }
     }
+
+    // Populate lists using updateList
+    updateList("primeList", primes);
+    updateList("nonPrimeList", nonPrimes);
+}
+
+// function updates the list with the given listId with the given numbers
+// listId = id of the list to update
+// numbers = list of numbers to display
+function updateList(listId, numbers) {
+    const listElement = document.getElementById(listId);
+    // clears prev list
+    listElement.innerHTML = "";
+
+    numbers.forEach(num => {
+        const li = document.createElement("li");
+        li.textContent = num;
+        listElement.appendChild(li);
+    });
+
+    // Store sorted lists globally so sorting works
+    if (listId === "primeList") {
+        window.primeNumbers = numbers;
+    } else {
+        window.nonPrimeNumbers = numbers;
+    }
+}
+
+//
+function toggleSortAll() {
+    isAscending = !isAscending; // Toggle sorting order
+    
+    // Reverse lists
+    window.primeNumbers.reverse();
+    window.nonPrimeNumbers.reverse();
+
+    // Update displayed lists
+    updateList("primeList", window.primeNumbers);
+    updateList("nonPrimeList", window.nonPrimeNumbers);
 }
 
 function toggleDarkMode() {
     document.body.classList.toggle("dark-mode");
-  }  
-
-function calculateSum(list) {
-
 }
 
-
-function toggleSort(listId) {
-    // get the listId element
-    let listElement = document.getElementById(listId);
-    // get the list of numbers
-    let items = Array.from(listElement.children).map(li => parseInt(li.textContent));
-
-    // toggle sorting order
-    isAscending = !isAscending;
-    items.sort((a, b) => isAscending ? a - b : b - a);
-
-    // update the list
-    updateList(listId, items);
-}
-
-// sort list
-function addSortButtons(listId) {
-    const list = ["primeList", "nonPrimeList"];
-
-    list.forEach(listId => {
-        let sortBtn = document.getElementById(listId + "Sort");
-        sortBtn.textContent = "Sort";
-        sortBtn.classList.add("sort-btn");
-        sortBtn.onclick = () => { toggleSort(listId)};
-        document.getElementById(listId).parentNode.appendChild(sortBtn);
-    });
-}
- 
-window.onload = addSortButtons;
-
+// Function to change list colors smoothly every 5 seconds
 function changeColors() {
     const colors = ["red", "blue", "green"];
     let currColorIndex = 0;
 
-    // chnages the colors of the list every 5 seconds
     setInterval(() => {
         document.querySelectorAll(".list").forEach(list => {
             list.style.transition = "background-color 1s ease-in-out";
             list.style.backgroundColor = colors[currColorIndex];
         });
 
-        // switches to the next color every 5 secodns
+        // Switches to the next color every 5 seconds
         currColorIndex = (currColorIndex + 1) % colors.length;
     }, 5000);
 }
