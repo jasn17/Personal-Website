@@ -9,6 +9,9 @@ Grade Level Completed: C, B, A, and Bonus
 document.getElementById("startButton").addEventListener("click", generateLists);
 document.getElementById("toggleTheme").addEventListener("click", toggleDarkMode);
 document.getElementById("primeSortButton").addEventListener("click", toggleSortAll);
+document.getElementById("primeSumButton").addEventListener("click", showPrimeSum);
+document.getElementById("nonPrimeSumButton").addEventListener("click", showNonPrimeSum);
+
 
 // default to ascending order
 let isAscending = true;
@@ -29,8 +32,8 @@ function generateLists() {
     const numInput = document.getElementById("numberInput").value;
     const limit = parseInt(numInput);
 
-    if (isNaN(limit) || limit < 1) {
-        alert("Please enter a valid positive number.");
+    if (isNaN(limit) || limit <= 0 || !Number.isInteger(limit)) {
+        alert("Please enter a valid positive integer.");
         return;
     }
 
@@ -76,7 +79,43 @@ function updateList(listId, numbers) {
     }
 }
 
-//
+
+//function shows divisors when hovering over composite numbers
+function showDivisors(li, num) {
+    let divisors = getDivisors(num);
+    li.setAttribute("title", `Divisors: ${divisors.join(", ")}`);
+}
+
+//function hides divisors when the mouse leaves
+function hideDivisors(li) {
+    li.removeAttribute("title");
+}
+
+//function computes the divisors of a number and adds them to a list
+function getDivisors(num) {
+    let divisors = [];
+    for (let i = 1; i <= num / 2; i++) {
+        if (num % i === 0) {
+            divisors.push(i);
+        }
+    }
+    divisors.push(num);
+    return divisors;
+}
+
+//function shows the sum of prime numbers
+function showPrimeSum() {
+    let sum = window.primeNumbers.reduce((acc, num) => acc + num, 0);
+    document.getElementById("primeSumButton").textContent = `SUM: ${sum}`;
+}
+
+//function shows the sum of composite numbers
+function showNonPrimeSum() {
+    let sum = window.nonPrimeNumbers.reduce((acc, num) => acc + num, 0);
+    document.getElementById("nonPrimeSumButton").textContent = `SUM: ${sum}`;
+}
+
+
 function toggleSortAll() {
     isAscending = !isAscending; // Toggle sorting order
     

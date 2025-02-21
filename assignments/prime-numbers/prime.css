@@ -105,3 +105,16 @@ li {
 .dark-mode .lists-container {
   background-color: #333;
 }
+
+/* Tooltip for divisors */
+li[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    background: black;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    transform: translateY(-25px);
+}
