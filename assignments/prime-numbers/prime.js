@@ -6,11 +6,10 @@ Programming Exam 1
 Grade Level Completed: C, B, A, and Bonus
 */
 // Create the click event listener for the startButton and toggleTheme element
-
+let isAscending = true;
 document.getElementById("startButton").addEventListener("click", generateLists);
 document.getElementById("toggleTheme").addEventListener("click", toggleDarkMode);
 
-document.getElementById("startButton").addEventListener("click", generateLists);
 function isPrime(num) {
     for(let i = 2, s = Math.sqrt(num); i <= s; i++) {
         if(num % i === 0) return false;
@@ -69,20 +68,20 @@ function toggleSort(listId) {
 function addSortButtons(listId) {
     const list = ["primeList", "nonPrimeList"];
 
-    lists.forEach(listId => {
+    list.forEach(listId => {
         let sortBtn = document.getElementById(listId + "Sort");
         sortBtn.textContent = "Sort";
-        sortBtn.classList.add(sort-btn);
-        sortBtn.onclick = () => { togglesort(listId)};
+        sortBtn.classList.add("sort-btn");
+        sortBtn.onclick = () => { toggleSort(listId)};
         document.getElementById(listId).parentNode.appendChild(sortBtn);
     });
 }
-
+ 
 window.onload = addSortButtons;
 
 function changeColors() {
-    const colors = ["#ffadad", "#ffd6a5", "#fdffb6", "#caffbf", "#9bf6ff", "#a0c4ff", "#bdb2ff"];
-    currColorIndex = 0;
+    const colors = ["red", "blue", "green"];
+    let currColorIndex = 0;
 
     // chnages the colors of the list every 5 seconds
     setInterval(() => {
@@ -96,4 +95,4 @@ function changeColors() {
     }, 5000);
 }
 
-changeListColors();
+changeColors();
