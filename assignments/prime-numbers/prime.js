@@ -12,11 +12,10 @@ document.getElementById("primeSortButton").addEventListener("click", toggleSortA
 document.getElementById("primeSumButton").addEventListener("click", showPrimeSum);
 document.getElementById("nonPrimeSumButton").addEventListener("click", showNonPrimeSum);
 
-
-// default to ascending order
+// Default to ascending order
 let isAscending = true;
 
-// function takes in an number and returns true if it is prime, false otherwise
+// Function checks if a number is prime
 function isPrime(num) {
     if (num < 2) return false;
     for (let i = 2, s = Math.sqrt(num); i <= s; i++) {
@@ -25,9 +24,7 @@ function isPrime(num) {
     return true;
 }
 
-// function generates prime and non-prime lists based on user input
-// primeList = list of prime numbers up to the limit
-// nonPrimeList = list of non-prime numbers up to the limit
+// Function generates prime and non-prime lists based on user input
 function generateLists() {
     const numInput = document.getElementById("numberInput").value;
     const limit = parseInt(numInput);
@@ -37,7 +34,7 @@ function generateLists() {
         return;
     }
 
-    // clear prev lists
+    // Clear previous lists
     document.getElementById("primeList").innerHTML = "";
     document.getElementById("nonPrimeList").innerHTML = "";
 
@@ -52,26 +49,30 @@ function generateLists() {
         }
     }
 
-    // Populate lists using updateList
-    updateList("primeList", primes);
-    updateList("nonPrimeList", nonPrimes);
+    // Populate lists
+    updateList("primeList", primes, false);
+    updateList("nonPrimeList", nonPrimes, true);
 }
 
-// function updates the list with the given listId with the given numbers
-// listId = id of the list to update
-// numbers = list of numbers to display
-function updateList(listId, numbers) {
+// Function updates the list with numbers and adds hover effects for composite numbers
+function updateList(listId, numbers, isComposite) {
     const listElement = document.getElementById(listId);
-    // clears prev list
-    listElement.innerHTML = "";
+    listElement.innerHTML = ""; // Clear previous items
 
     numbers.forEach(num => {
         const li = document.createElement("li");
         li.textContent = num;
+
+        // If this is a composite number, add hover events
+        if (isComposite) {
+            li.addEventListener("mouseenter", () => showDivisors(li, num));
+            li.addEventListener("mouseleave", () => hideDivisors(li));
+        }
+
         listElement.appendChild(li);
     });
 
-    // Store sorted lists globally so sorting works
+    // Store sorted lists globally
     if (listId === "primeList") {
         window.primeNumbers = numbers;
     } else {
@@ -79,19 +80,18 @@ function updateList(listId, numbers) {
     }
 }
 
-
-//function shows divisors when hovering over composite numbers
+// Function shows divisors when hovering over composite numbers
 function showDivisors(li, num) {
     let divisors = getDivisors(num);
     li.setAttribute("title", `Divisors: ${divisors.join(", ")}`);
 }
 
-//function hides divisors when the mouse leaves
+// Function hides divisors when the mouse leaves
 function hideDivisors(li) {
     li.removeAttribute("title");
 }
 
-//function computes the divisors of a number and adds them to a list
+// Function computes the divisors of a number and returns a list
 function getDivisors(num) {
     let divisors = [];
     for (let i = 1; i <= num / 2; i++) {
@@ -103,19 +103,19 @@ function getDivisors(num) {
     return divisors;
 }
 
-//function shows the sum of prime numbers
+// Function shows the sum of prime numbers
 function showPrimeSum() {
     let sum = window.primeNumbers.reduce((acc, num) => acc + num, 0);
     document.getElementById("primeSumButton").textContent = `SUM: ${sum}`;
 }
 
-//function shows the sum of composite numbers
+// Function shows the sum of composite numbers
 function showNonPrimeSum() {
     let sum = window.nonPrimeNumbers.reduce((acc, num) => acc + num, 0);
     document.getElementById("nonPrimeSumButton").textContent = `SUM: ${sum}`;
 }
 
-
+// Function toggles sorting order
 function toggleSortAll() {
     isAscending = !isAscending; // Toggle sorting order
     
@@ -124,10 +124,11 @@ function toggleSortAll() {
     window.nonPrimeNumbers.reverse();
 
     // Update displayed lists
-    updateList("primeList", window.primeNumbers);
-    updateList("nonPrimeList", window.nonPrimeNumbers);
+    updateList("primeList", window.primeNumbers, false);
+    updateList("nonPrimeList", window.nonPrimeNumbers, true);
 }
 
+// Function toggles dark mode
 function toggleDarkMode() {
     document.body.classList.toggle("dark-mode");
 }
