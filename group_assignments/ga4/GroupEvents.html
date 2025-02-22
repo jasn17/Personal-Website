@@ -21,7 +21,44 @@
                 .catch(error => console.error('Error loading navbar:', error));
         </script>
 
+        <h1>Animation Demo </h1>
         
+        <!-- Animation Event Section -->
+        <section>
+        <h2>Animation Events</h2>
+        <div id="animateBox"></div>
+        <p id="animationStatus">Animation event status: none</p>
+        </section>
+
+        <!-- Drag Event Section -->
+        <section>
+        <h2>Drag Events</h2>
+        <div id="dragSource" draggable="true">Drag me</div>
+        <div id="dropZone">Drop here</div>
+        <p id="dragStatus">Drag event status: none</p>
+        </section>
+
+        <!-- Input Event Section -->
+        <section>
+        <h2>Input Events</h2>
+        <input type="text" id="inputField" placeholder="Type something...">
+        <p id="inputStatus">Input event status: none</p>
+        </section>
+
+        <!-- Mouse Event Section -->
+        <section>
+        <h2>Mouse Events</h2>
+        <button id="mouseButton">Hover and Click me</button>
+        <p id="mouseStatus">Mouse event status: none</p>
+        </section>
+
+        <!-- Focus Event Section -->
+        <section>
+        <h2>Focus Events</h2>
+        <input type="text" id="focusInput" placeholder="Click to focus">
+        <p id="focusStatus">Focus event status: none</p>
+        </section>
+
         <div id="footer-container"></div>
         <script>
             fetch('footer.html')
@@ -31,6 +68,7 @@
                 })
                 .catch(error => console.error('Error loading footer:', error));
         </script>
+        <script src="GroupEvents.js"></script>
     </body>
 </html>
 
