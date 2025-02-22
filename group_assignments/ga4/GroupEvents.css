@@ -13,54 +13,77 @@ body {
     overflow-x: hidden;
 }
 
-/* Animation Events */
-#animateBox {
+/* Common styles for section layout */
+.section-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+  
+  .description, .demo {
+    flex: 1;
+    margin: 5em;
+    width: 50%;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  
+  /* Animation Events */
+  #animateBox {
     width: 100px;
     height: 100px;
-    background-color: coral;
-    margin: 20px;
-    animation: moveBox 3s infinite;
+    background: url('yesmile.jpeg') no-repeat center center;
+    background-size: 80%;
+    animation: moveBox 5s infinite;
   }
   @keyframes moveBox {
     0% { transform: translateX(0); }
-    50% { transform: translateX(200px); }
+    50% { transform: translateX(490px); }
     100% { transform: translateX(0); }
   }
   
   /* Drag Events */
   #dragSource {
-    width: 100px;
-    height: 100px;
-    background-color: lightblue;
-    margin: 20px;
+    width: 15em;
+    height: 15em;
+    background: url('yetank.jpeg') no-repeat center center;
+    background-size: 90%;
     cursor: move;
-  }
-  #dropZone {
-    width: 150px;
-    height: 150px;
-    background-color: lightgray;
-    margin: 20px;
-    border: 2px dashed #333;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+  #dropZone {
+    width: 15em;
+    height: 15em;
+    background-color: lightgray;
+    border: 2px dashed #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
   
   /* Input Events */
   #inputField {
-    margin: 20px;
     padding: 5px;
   }
   
   /* Mouse Events */
   #mouseButton {
-    margin: 20px;
     padding: 10px;
   }
   
   /* Focus Events */
   #focusInput {
-    margin: 20px;
     padding: 5px;
+  }
+  
+  /* Optional: Style for sections */
+  section {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
   }
   

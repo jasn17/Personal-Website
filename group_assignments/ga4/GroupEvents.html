@@ -8,12 +8,13 @@
         <link rel="icon" href="img/jasnlogo.png" alt="logo" />
         <link rel="stylesheet" href="../../styles/footer.css">
         <link rel="stylesheet" href="../../styles/navbar.css">
+        <link rel="stylesheet" href="GroupEvents.css">
         <title> Official JL</title>
     </head>
     <body>
         <div id="navbar-container"></div>
         <script>
-            fetch('navbar.html')
+            fetch('../../navbar.html')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('navbar-container').innerHTML = data;
@@ -23,45 +24,90 @@
 
         <h1>Animation Demo </h1>
         
-        <!-- Animation Event Section -->
+        <!-- Animation Events Section -->
         <section>
-        <h2>Animation Events</h2>
-        <div id="animateBox"></div>
-        <p id="animationStatus">Animation event status: none</p>
+            <h2>Animation Events</h2>
+            <div class="section-container">
+            <div class="description">
+                <p>
+                This demo shows an animated box that moves from left to right and back. The status message updates when the animation starts, repeats, or ends.
+                </p>
+            </div>
+            <div class="demo">
+                <div id="animateBox"></div>
+                <p id="animationStatus">Animation event status: none</p>
+            </div>
+            </div>
         </section>
-
-        <!-- Drag Event Section -->
+        
+        <!-- Drag Events Section -->
         <section>
-        <h2>Drag Events</h2>
-        <div id="dragSource" draggable="true">Drag me</div>
-        <div id="dropZone">Drop here</div>
-        <p id="dragStatus">Drag event status: none</p>
+            <h2>Drag Events</h2>
+            <div class="section-container">
+            <div class="description">
+                <p>
+                In this demo, drag the blue box into the drop zone. The status message updates when dragging starts, while dragging over the drop zone, and when the drop occurs.
+                </p>
+            </div>
+            <div class="demo">
+                <div id="dragSource" draggable="true" style = "color: white;">Drag me</div>
+                <div id="dropZone">Drop here</div>
+                <p id="dragStatus" style="font-weight: 600;">Drag event status: none</p>
+            </div>
+            </div>
         </section>
-
-        <!-- Input Event Section -->
+        
+        <!-- Input Events Section -->
         <section>
-        <h2>Input Events</h2>
-        <input type="text" id="inputField" placeholder="Type something...">
-        <p id="inputStatus">Input event status: none</p>
+            <h2>Input Events</h2>
+            <div class="section-container">
+            <div class="description">
+                <p>
+                Type into the input field on the right to see the current input value displayed in real-time.
+                </p>
+            </div>
+            <div class="demo">
+                <input type="text" id="inputField" placeholder="Type something...">
+                <p id="inputStatus">Input event status: none</p>
+            </div>
+            </div>
         </section>
-
-        <!-- Mouse Event Section -->
+        
+        <!-- Mouse Events Section -->
         <section>
-        <h2>Mouse Events</h2>
-        <button id="mouseButton">Hover and Click me</button>
-        <p id="mouseStatus">Mouse event status: none</p>
+            <h2>Mouse Events</h2>
+            <div class="section-container">
+            <div class="description">
+                <p>
+                Hover over and click the button on the right to see different status messages update based on your mouse actions.
+                </p>
+            </div>
+            <div class="demo">
+                <button id="mouseButton">Hover and Click me</button>
+                <p id="mouseStatus">Mouse event status: none</p>
+            </div>
+            </div>
         </section>
-
-        <!-- Focus Event Section -->
+        
+        <!-- Focus Events Section -->
         <section>
-        <h2>Focus Events</h2>
-        <input type="text" id="focusInput" placeholder="Click to focus">
-        <p id="focusStatus">Focus event status: none</p>
+            <h2>Focus Events</h2>
+            <div class="section-container">
+            <div class="description">
+                <p>
+                Click into the input field on the right to focus it and then click away to see the focus status update.
+                </p>
+            </div>
+            <div class="demo">
+                <input type="text" id="focusInput" placeholder="Click to focus">
+                <p id="focusStatus">Focus event status: none</p>
+            </div>
+            </div>
         </section>
 
         <div id="footer-container"></div>
         <script>
-            fetch('footer.html')
+            fetch('../../footer.html')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('footer-container').innerHTML = data;
