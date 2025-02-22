@@ -1,4 +1,5 @@
-// Animation Events: Listen for animationstart, animationiteration, and animationend
+// Animation events
+// Listen for animationstart, animationiteration, and animationend
 const animateBox = document.getElementById('animateBox');
 const animationStatus = document.getElementById('animationStatus');
 
@@ -12,7 +13,8 @@ animateBox.addEventListener('animationend', function() {
   animationStatus.textContent = 'Animation ended';
 });
 
-// Drag Events: Listen for dragstart, dragover, and drop events
+// Drag events
+// Listen for dragstart, dragover, and drop events
 const dragSource = document.getElementById('dragSource');
 const dropZone = document.getElementById('dropZone');
 const dragStatus = document.getElementById('dragStatus');
@@ -32,7 +34,7 @@ dropZone.addEventListener('drop', function(event) {
   dragStatus.textContent = 'Dropped!';
 });
 
-// Input Events: Update as the user types
+// Input events 
 const inputField = document.getElementById('inputField');
 const inputStatus = document.getElementById('inputStatus');
 
@@ -40,7 +42,7 @@ inputField.addEventListener('input', function() {
   inputStatus.textContent = 'Current input: ' + inputField.value;
 });
 
-// Mouse Events: Change status on click, mouseover, and mouseout
+// Mouse events
 const mouseButton = document.getElementById('mouseButton');
 const mouseStatus = document.getElementById('mouseStatus');
 
@@ -56,7 +58,7 @@ mouseButton.addEventListener('mouseout', function() {
   mouseStatus.textContent = 'Mouse left button!';
 });
 
-// Focus Events: Update status on focus and blur
+// Focus events
 const focusInput = document.getElementById('focusInput');
 const focusStatus = document.getElementById('focusStatus');
 

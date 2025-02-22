@@ -29,7 +29,7 @@ body {
     box-sizing: border-box;
   }
   
-  /* Animation Events */
+  /* Animation events*/
   #animateBox {
     width: 100px;
     height: 100px;
@@ -43,7 +43,7 @@ body {
     100% { transform: translateX(0); }
   }
   
-  /* Drag Events */
+  /* Drag events*/
   #dragSource {
     width: 15em;
     height: 15em;
