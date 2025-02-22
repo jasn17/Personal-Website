@@ -1,3 +1,12 @@
+<!-- 
+ Demostrate the following:
+ - play music
+ - pause music
+ - adjust volume
+ - show duration 
+ - show play time
+  -->
+
 <!DOCTYPE html>
 <html lang="en"> 
     <head>
@@ -24,6 +33,52 @@
                 .catch(error => console.error('Error loading navbar:', error));
         </script>
 
+        <div class = "main-body"> 
+            <div class="left-col">
+                <div class="song-shelf">
+                    <div class="song" data-title="Father Stretch My Hand" data-artist="Kanye West" data-src="audio/fsmh.mp3">
+                        <i class="fa fa-music"></i>
+                        <span>Father Stretch My Hand - Kanye West</span>
+                    </div>
+                    <div class="song" data-title="Father Stretch My Hand Pt. 2" data-artist="Kanye West" data-src="audio/pt2.mp3">
+                        <i class="fa fa-music"></i>
+                        <span>Father Stretch My Hand Pt.2 - Kanye West</span>
+                    </div>
+                    <div class="song" data-title="Come To Life" data-artist="Kanye West" data-src="audio/ctl.mp3">
+                        <i class="fa fa-music"></i>
+                        <span>Come To Life - Kanye West</span>
+                    </div>
+                    <div class="song" data-title="Heaven and Hell" data-artist="Kanye West" data-src="audio/hnh.mp3">
+                        <i class="fa fa-music"></i>
+                        <span>Heaven and Hell - Kanye West</span>
+                    </div>
+                    <div class="song" data-title="Off The Grid" data-artist="Kanye West" data-src="audio/offthegrid.mp3">
+                        <i class="fa fa-music"></i>
+                        <span>Off The Grid - Kanye West</span>
+                    </div>
+                    <div class="song" data-title="Praise God" data-artist="Kanye West" data-src="audio/praiseGod.mp3">
+                        <i class="fa fa-music"></i>
+                        <span>Praise God - Kanye West</span>
+                    </div>
+                    <div class="song" data-title="The Glory" data-artist="Kanye West" data-src="audio/theglory.mp3">
+                        <i class="fa fa-music"></i>
+                        <span>The Glory - Kanye West</span>
+                    </div>
+                    <div class="song" data-title="Ultralight Beam" data-artist="Kanye West" data-src="audio/ulbeam.mp3">
+                        <i class="fa fa-music"></i>
+                        <span>Ultralight Beam - Kanye West</span>
+                    </div>
+                    <div class="song" data-title="Waves" data-artist="Kanye West" data-src="audio/waves.mp3">
+                        <i class="fa fa-music"></i>
+                        <span>Waves - Kanye West</span>
+                    </div>
+                </div>
+            </div>
+            <div class="right-col" id = "player-container">
+
+            </div>
+        </div>  
+
         
         <div id="footer-container"></div>
         <script>
@@ -34,6 +89,7 @@
                 })
                 .catch(error => console.error('Error loading footer:', error));
         </script>
+        <script src="audio.js"></script>
     </body>
 </html>
 

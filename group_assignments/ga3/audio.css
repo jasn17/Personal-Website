@@ -1,13 +1,83 @@
 html, body {
     height: 100%;
     margin: 0;
-}
-
-body {
+  }
+  
+  body {
     font-family: 'Heebo', 'Times New Roman', Times, serif;
-    margin: 0;
-    padding: 0;
     background: #F9F6EE;
     text-align: center;
     overflow-x: hidden;
-}
+  }
+  
+  .main-body {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    min-height: 85vh;
+    margin: 0;  
+  }
+  
+  .left-col {
+    border: 1px solid black;
+    box-shadow: inset 0 0 10px #393939;
+    padding: 10px;
+  }
+  
+  .song-shelf {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+  }
+  
+  .song {
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 2em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background 0.2s;
+  }
+  
+  .song:hover {
+    background: #e0e0e0;
+  }
+  
+  .song i {
+    margin-right: 3em;
+  }
+  
+  .right-col {
+    border: 1px solid black;
+    box-shadow: inset 0 0 2px #474747;
+    padding: 10px;
+    overflow-y: auto;
+  }
+  
+  .audio-player {
+    margin: 1em;
+    padding: 1em;
+    border: 1px solid #888;
+    border-radius: 4px;
+    background: #fff;
+    text-align: left;
+  }
+  
+  .audio-player .audio-header {
+    margin-bottom: 1em;
+    font-size: 1.1em;
+  }
+  
+  .audio-player .controls button {
+    margin-right: 5px;
+  }
+  
+  .audio-player .controls input[type="range"] {
+    vertical-align: middle;
+  }
+  
+  .audio-player .time-display {
+    margin-top: 2em;
+    font-size: 0.9em;
+  }
+  
