@@ -2,12 +2,14 @@ document.addEventListener("DOMContentLoaded", function(){
     const songs = document.querySelectorAll('.song');
     const playerContainer = document.getElementById('player-container');
   
+    // When clicking on a song, create an audio player for that song
     songs.forEach(song => {
       song.addEventListener('click', function(){
         createAudioPlayer(song);
       });
     });
   
+    // Create an audio player for the given song element with all functionality
     function createAudioPlayer(songElement) {
         const title = songElement.getAttribute('data-title');
         const artist = songElement.getAttribute('data-artist');
@@ -31,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function(){
         const controlsDiv = document.createElement('div');
         controlsDiv.classList.add('controls');
     
-        // Play button with icon
+        // Play button function with  icon
         const playBtn = document.createElement('button');
         const playIcon = document.createElement('i');
         playIcon.className = "fa fa-play"; // Font Awesome play icon
@@ -39,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function(){
         playBtn.addEventListener('click', () => audio.play());
         controlsDiv.appendChild(playBtn);
     
-        // Pause button with icon
+        // Pause button function with icon
         const pauseBtn = document.createElement('button');
         const pauseIcon = document.createElement('i');
         pauseIcon.className = "fa fa-pause"; // Font Awesome pause icon
@@ -86,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function(){
         playerContainer.appendChild(playerDiv);
     }
   
-    // Helper: convert seconds into minutes:seconds format
+    // convert seconds into minutes:seconds format
     function formatTime(seconds) {
         const mins = Math.floor(seconds / 60);
         const secs = Math.floor(seconds % 60);
