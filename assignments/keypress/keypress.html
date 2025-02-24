@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="example.js"></script>
     <meta charset="UTF-8">
     <title>Official JL - KeyPress Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,10 +11,9 @@
     <link rel="stylesheet" href="layout.css">
     <link rel="stylesheet" href="../../styles/navbar.css">
     <link rel="stylesheet" href="../../styles/footer.css">
-    <link rel="stylesheet" href="keypress.css"
-    <script src="keypress.js"></script>
+    <link rel="stylesheet" href="keypress.css">
   </head>
-  <body>
+  <body onkeypress="displayKey(event)">
     <div id="navbar-container"></div>
     <script>
         fetch('../../navbar.html')
