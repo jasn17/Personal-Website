@@ -1,14 +1,11 @@
 function displayKey(e) {
-    // Get the key code from the event
     var keycode = e.keyCode || e.which;
     var character = String.fromCharCode(keycode);
     
-    // Force vowels to uppercase
     if ("aeiou".includes(character)) {
       character = character.toUpperCase();
     }
     
-    // Check for color change keys (R, G, or B) - case insensitive
     switch (character.toUpperCase()) {
       case "R":
         document.body.style.backgroundColor = "red";
