@@ -15,7 +15,7 @@ body {
 /* Style for the box displaying typed letters */
 #keys {
     width: 300px;
-    height: 150px;
+    height: 80vh;
     border: 2px solid #333;
     padding: 10px;
     margin: 20px auto;     
@@ -27,9 +27,9 @@ body {
 }
 
 /* Container for the key display demo */
-.key-container {
-    display: grid;
+.key {
     justify-content: space-between;
     min-height: 80vh;
+    width: auto;
     align-items: center;
 }
