@@ -1,5 +1,5 @@
 function displayKey(e) {
-    // which key was pressed?
+    // Determine the key code form the event object
     if (e.keyCode) {
        var keycode=e.keyCode;
     }  else {
@@ -7,9 +7,12 @@ function displayKey(e) {
     }
     character=String.fromCharCode(keycode);
 
+    // Convert vowl to uppercase
     if("aeiou".includes(character)) {
        character=character.toUpperCase();
     }
+
+    // Change BG color to red, green, or blue based on keys
     if(character.toUpperCase() == "R") {
        document.body.style.backgroundColor="red";
        document.body.style.color="white";
@@ -24,9 +27,9 @@ function displayKey(e) {
     }
 
 
-    // find the object for the destination paragraph
+    // Find the object for the destination paragraph
     var keysParagraph = document.getElementById('keys');
 
-    // add the character to the paragraph
+    // Add the character to the paragraph
     keysParagraph.innerHTML += character;
  }

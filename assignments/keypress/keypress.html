@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="keypress.css">
   </head>
   <body onkeypress="displayKey(event)">
+    <!-- Navigation Bar -->
     <div id="navbar-container"></div>
     <script>
         fetch('../../navbar.html')
@@ -24,11 +25,15 @@
             .catch(error => console.error('Error loading navbar:', error));
     </script>
     
-    <h1>Displaying Typed Characters</h1>
+    <!-- Containter for the box where user will type their text, will be responsive to
+     'r' 'g' and 'b' as well as any voweld -->
+    <div style="min-height: 85vh;">
+      <h1>Displaying Typed Characters</h1>
     <p>This document includes a simple script that displays the keys you type as a new paragraph below. Type a few keys to try it.</p>
     <div id="keys"></div>
-
+    </div>
     
+    <!-- Footer  -->
     <div id="footer-container"></div>
     <script>
         fetch('../../footer.html')
