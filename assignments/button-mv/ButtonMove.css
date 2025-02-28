@@ -84,3 +84,13 @@ button:hover {
     transition: background-color 0.3s;
 }
 
+.page-title {
+    font-size: 2.5rem;
+    font-family: 'Heebo', 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color: #333;
+    margin-top: 1rem;
+    text-align: center;
+    letter-spacing: 1px;
+    background-color: #f0f0f0;
+}
