@@ -21,6 +21,10 @@ $(document).ready(function(){
     $("#fade3").click(function(){
       $("#div3").fadeOut();
     });
+
+    $("#fade4").click(function(){
+      $("#div4").fadeOut();
+    });
   
     // Initialize jQuery Datepicker
     $("#datepicker").datepicker();
