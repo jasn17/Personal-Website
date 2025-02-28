@@ -10,4 +10,41 @@ body {
     background: #F9F6EE;
     text-align: center;
     overflow-x: hidden;
+    min-height: 85vh;
+}
+
+/* Container set as a grid with 2 columns and 2 rows */
+.quadrant-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2em;
+  }
+  
+/* Each quadrant styling for consistent look */
+.quadrant {
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Style for hover divs */
+.hoverDiv {
+    padding: 1em;
+    margin-top: 1em;
+    border: 1px solid black;
+}
+
+/* Progressbar styling */
+#progressbar {
+    height: 20px;
+}
+
+#progressbar-container {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.ui-accordion .ui-accordion-header {
+    background-color: #202f5a !important;
+    color: white;  /* Optional: change the text color for contrast */
 }

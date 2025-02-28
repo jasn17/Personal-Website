@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <title>Official JL - KeyPress Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">  
     <link rel="stylesheet" href="layout.css">
@@ -23,7 +26,86 @@
                 .catch(error => console.error('Error loading navbar:', error));
         </script>
 
+        <h1>jQuery Demo</h1>
+
+        <!-- Quadrant Container -->
+        <div class="quadrant-container">
         
+            <!-- Quadrant 1: Fade Div 1 -->
+            <div class="quadrant">
+                <button id="fade1">Fade</button>
+                <div id="div1" class="hoverDiv quadrant-item">
+                    <p><strong>Try clicking the button above to make this div fade!</strong></p>
+                </div>
+            </div>
+            
+            <!-- Quadrant 2: Fade Div 2 -->
+            <div class="quadrant">
+                <button id="fade2">Fade</button>
+                <div id="div2" class="hoverDiv quadrant-item">
+                    <p><strong>Click each "Fade" button to make the corresponding div fade away!</strong></p>
+                    <p>Another paragraph in div 2.</p>
+                </div>
+            </div>
+            
+            <!-- Quadrant 3: Fade Div 3 -->
+            <div class="quadrant">
+                <button id="fade3">Fade</button>
+                <div id="div3" class="hoverDiv quadrant-item">
+                    <p><strong>
+                        Fun fact: jQuery was originally called "JSelect": 
+                        Initially, it was named "JSelect" but the domain name jselect.com wasn't available, 
+                        so it was renamed to jQuery.
+                    </strong></p>
+                </div>
+            </div>
+
+            <!-- Quadrant 3: Fade Div 3.5 -->
+            <div class="quadrant">
+                <button id="fade3">Fade</button>
+                <div id="div3" class="hoverDiv quadrant-item">
+                    <p><strong>
+                        Fun Fact: jQuery was inspired by other open-source projects: John Resig, 
+                        the creator of jQuery, was inspired by several open-source projects when developing jQuery.
+                    </strong></p>
+                </div>
+            </div>
+            
+            <!-- Quadrant 4: Other jQuery Widgets -->
+            <div class="quadrant">
+            <p>Select a date: <input type="text" id="datepicker"></p>
+            <div id="accordion">
+                <h3>Secret Fun Fact #1</h3>
+                <div>
+                <p><strong>
+                    First jQuery plugin was created within two weeks of its release: 
+                    The first jQuery plugin was created by Michael Geary just 11 days after 
+                    the first release of the library.
+                </strong></p>
+                </div>
+                <h3>Secret Fun Fact #2</h3>
+                <div>
+                <p><strong>
+                    jQuery is compatible with other JavaScript libraries: It can be used 
+                    alongside other popular libraries and frameworks like Bootstrap and WordPress.
+                </strong></p>
+                </div>
+                <h3>Secret Fun Fact #3</h3>
+                <div>
+                <p><strong>
+                    jQuery has a large community and resources: The official jQuery website offers 
+                    comprehensive documentation, tutorials, and a forum for community support.
+                </strong></p>
+                </div>
+            </div>
+            <div id="progressbar-container">
+                <div id="progressbar"></div>
+                <p id="progress-text">0% Complete</p>
+            </div>
+            </div>
+            
+        </div>
+
 
         <div id="footer-container"></div>
         <script>
@@ -34,5 +116,6 @@
                 })
                 .catch(error => console.error('Error loading footer:', error));
         </script>
+        <script src="jq.js" defer></script>
     </body>
 </html>
