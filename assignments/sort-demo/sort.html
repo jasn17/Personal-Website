@@ -14,6 +14,7 @@
   </head>
 
   <body>
+    <!-- Navigation bar  -->
     <div id="navbar-container"></div>
         <script>
             fetch('../../navbar.html')
@@ -24,22 +25,25 @@
                 .catch(error => console.error('Error loading navbar:', error));
         </script>
 
+    <!-- Page decriptor -->
      <h1>Sorting String Arrays</h1>
      <p>Enter two or more names in the field below,
      and the sorted list of names will appear in the
      textarea.</p>
 
-     <form name="theform" onsubmit="return false;">
-     Name:
-     <input type="text" name="newname" size="20" id="nameInput"> <!-- This is the input text box -->
-    <input type="button" id="addButton" name="addname" value="Add" onclick="SortNames();"> <!-- This the "Add button" -->
-    <br>
-     <h2>Sorted Names</h2>
-     <textarea cols="60" rows="10" name="sorted"> 
-     The sorted names will appear here.
-     </textarea>
+    <!-- Textbox  -->
+     <form class="theform" name = "theform" onsubmit="return false;">
+        Name:
+        <input type="text" name="newname" size="20" id="nameInput"> <!-- This is the input text box -->
+        <input type="button" id="addButton" name="addname" value="Add" onclick="SortNames();"> <!-- This the "Add button" -->
+        <br>
+        <h2>Sorted Names</h2>
+        <textarea cols="60" rows="10" name="sorted"> 
+        The sorted names will appear here.
+        </textarea>
      </form>
 
+     <!-- Footer  -->
      <div id="footer-container"></div>
         <script>
             fetch('../../footer.html')

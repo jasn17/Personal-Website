@@ -12,6 +12,7 @@
         <title> Official JL</title>
     </head>
     <body>
+        <!-- Navigation -->
         <div id="navbar-container"></div>
         <script>
             fetch('../../navbar.html')
@@ -22,6 +23,7 @@
                 .catch(error => console.error('Error loading navbar:', error));
         </script>
 
+        <!-- Main panel for moving button -->
         <div class="controls" id="controls">
             <select id="colorSelect">
                 <option value="red">Red</option>
@@ -45,7 +47,8 @@
 
         <div id="view-area" class="view-area"></div>
         
-
+        
+        <!-- Footer -->
         <div id="footer-container"></div>
         <script>
             fetch('../../footer.html')
