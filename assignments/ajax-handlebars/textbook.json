@@ -6,7 +6,8 @@
         "country": "USA",
         "city": "New York",
         "publisher": "TechBooks Publishing",
-        "topics": ["Basics", "Materials", "Design"]
+        "topics": ["Basics", "Materials", "Design"],
+        "available": true
     },
     {
         "author": "Jane Smith",
@@ -15,7 +16,8 @@
         "country": "UK",
         "city": "London",
         "publisher": "Engineering Press",
-        "topics": ["Energy", "Entropy", "Heat Transfer"]
+        "topics": ["Energy", "Entropy", "Heat Transfer"],
+        "available": true
     },
     {
         "author": "Robert Brown",
@@ -24,7 +26,8 @@
         "country": "Canada",
         "city": "Toronto",
         "publisher": "Maple Leaf Publishing",
-        "topics": ["Fluid Statics", "Fluid Dynamics", "Flow Measurement"]
+        "topics": ["Fluid Statics", "Fluid Dynamics", "Flow Measurement"],
+        "available": true
     },
     {
         "author": "Emily White",
@@ -33,7 +36,8 @@
         "country": "Australia",
         "city": "Sydney",
         "publisher": "Aussie Engineering Books",
-        "topics": ["Vibration Analysis", "Damping", "Resonance"]
+        "topics": ["Vibration Analysis", "Damping", "Resonance"],
+        "available": true
     },
     {
         "author": "Michael Green",
@@ -42,6 +46,7 @@
         "country": "Germany",
         "city": "Berlin",
         "publisher": "Deutsche Engineering Verlag",
-        "topics": ["Conduction", "Convection", "Radiation"]
+        "topics": ["Conduction", "Convection", "Radiation"],
+        "available": true
     }
 ]
