@@ -29,9 +29,34 @@
             </div>
         </div>
 
-        <script type="text/x-handlebars-template" id = "book-template">
+        <script id="book-template" type="text/x-handlebars-template">
             {{#each books}}
-                <h2>{{title}}</h2>
+                <div class="book">
+                    <div class="photo-column">
+                        <img src="{{photo}}" alt="{{title}}">
+                    </div>
+
+                    <div class="info-column">
+                        <h2>{{title}}</h2>
+                        <p>Author: {{author}}</p>
+                        <p>Published Date: {{publishedDate}}</p>
+                        <p>Country: {{country}}</p>
+                        <p>City: {{city}}</p>
+                        <p>Publisher: {{publisher}}</p>
+                        <p>Topics:</p>
+                        <ul>
+                            {{#each topics}}
+                                <li>{{this}}</li>
+                            {{/each}}
+                        </ul>
+                        <p>Available: 
+                            {{#if available}}
+                                Yes
+                            {{else}}
+                                No
+                            {{/if}}</p>
+                    </div>
+                </div>
             {{/each}}
         </script>
 
@@ -46,7 +71,7 @@
                 .catch(error => console.error('Error loading footer:', error));
         </script>
        
-        <script src="aj.js"></script>
         <script src="handlebars-v4.7.8.js"></script>
+        <script src="aj.js"></script>
     </body>
 </html>
