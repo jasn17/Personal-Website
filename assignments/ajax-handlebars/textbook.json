@@ -5,7 +5,8 @@
         "publishedDate": "12-05-2015",
         "country": "USA",
         "city": "New York",
-        "publisher": "TechBooks Publishing"
+        "publisher": "TechBooks Publishing",
+        "topics": ["Basics", "Materials", "Design"]
     },
     {
         "author": "Jane Smith",
@@ -13,7 +14,8 @@
         "publishedDate": "23-08-2017",
         "country": "UK",
         "city": "London",
-        "publisher": "Engineering Press"
+        "publisher": "Engineering Press",
+        "topics": ["Energy", "Entropy", "Heat Transfer"]
     },
     {
         "author": "Robert Brown",
@@ -21,7 +23,8 @@
         "publishedDate": "11-11-2018",
         "country": "Canada",
         "city": "Toronto",
-        "publisher": "Maple Leaf Publishing"
+        "publisher": "Maple Leaf Publishing",
+        "topics": ["Fluid Statics", "Fluid Dynamics", "Flow Measurement"]
     },
     {
         "author": "Emily White",
@@ -29,7 +32,8 @@
         "publishedDate": "05-02-2020",
         "country": "Australia",
         "city": "Sydney",
-        "publisher": "Aussie Engineering Books"
+        "publisher": "Aussie Engineering Books",
+        "topics": ["Vibration Analysis", "Damping", "Resonance"]
     },
     {
         "author": "Michael Green",
@@ -37,6 +41,7 @@
         "publishedDate": "19-07-2016",
         "country": "Germany",
         "city": "Berlin",
-        "publisher": "Deutsche Engineering Verlag"
+        "publisher": "Deutsche Engineering Verlag",
+        "topics": ["Conduction", "Convection", "Radiation"]
     }
 ]
