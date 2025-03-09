@@ -18,6 +18,10 @@ ourRequest.onerror = function() {
 ourRequest.send();
  
 function createHTML(bookData) {
-    console.log('testing...');
-    console.log(bookData);
+    var rawTemplate = document.getElementById("book-template").innerHTML;
+    var compiledTemplate = Handlebars.compile(rawTemplate);
+    var ourGeneratedHTML = compiledTemplate(bookData);
+
+    var bookContainer = document.getElementById("book-container");
+    bookContainer.innerHTML = ourGeneratedHTML;
 }

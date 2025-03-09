@@ -22,11 +22,17 @@
                 .catch(error => console.error('Error loading navbar:', error));
         </script>
 
-        <h1>AJAX & Handlebars</h1>
-        <script type="text/x-handlebars-template">
-            {{
-                #each 
-            }}
+        <div class = "page-wrap">
+            <h1>AJAX & Handlebars</h1>
+            <div id = "book-container">
+                
+            </div>
+        </div>
+
+        <script type="text/x-handlebars-template" id = "book-template">
+            {{#each books}}
+                <h2>{{title}}</h2>
+            {{/each}}
         </script>
 
 
@@ -41,6 +47,6 @@
         </script>
        
         <script src="aj.js"></script>
-        <script src="handlebars.js"></script>
+        <script src="handlebars-v4.7.8.js"></script>
     </body>
 </html>
