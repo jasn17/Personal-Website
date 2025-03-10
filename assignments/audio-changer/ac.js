@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
     // Add a new song into the playlist after the currently playing song.
     addTitleButton.addEventListener('click', () => {
-      const titleName = prompt("Enter the new song title:");
+      const titleName = prompt("Enter the new song title (Ex: Example Music - Example Artist | example.mp3):");
       const src = prompt("Enter the URL or path for the mp3 file (Ex: ../../group_assignments/ga3/audio/xxx.mp3):");
       if (!titleName || !src) return;
       // Insert the new song immediately after the current song.
