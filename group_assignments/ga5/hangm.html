@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">    
+        <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <link rel="icon" href="img/jasnlogo.png" alt="logo" />
+        <link rel="stylesheet" href="hangm.css">
+        <link rel="stylesheet" href="../../styles/navbar.css">
+        <link rel="stylesheet" href="../../styles/footer.css">
+    </head>
+    <body>
+        <div id="navbar-container"></div>
+        <script>
+            fetch('../../navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading navbar:', error));
+        </script>
+
+        <main id="game">
+            <!-- D Version: Cheat Mode checkbox -->
+            <label>
+            <input type="checkbox" id="cheatMode" />
+            Cheat Mode (Reveal Word at Start)
+            </label>
+
+            <!-- A Version: The gallows/hangman image updates after each wrong guess -->
+            <div id="hangmanContainer">
+            <img id="hangmanImage" src="images/hangman0.png" alt="Hangman Image" />
+            </div>
+
+            <!-- Display underscores for the secret word -->
+            <div id="wordToGuess"></div>
+
+            <!-- C Version: 5×6 grid for letters A-Z -->
+            <div id="lettersGrid"></div>
+
+            <!-- Start/Restart Button -->
+            <button id="startBtn">Start New Game</button>
+        </main>
+
+
+        <div id="footer-container"></div>
+        <script>
+            fetch('../../footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading footer:', error));
+        </script>
+        <script src="hangm.js"></script>
+    </body>
+
+</html>

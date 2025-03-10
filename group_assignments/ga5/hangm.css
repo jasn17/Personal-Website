@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+  
+header h1 {
+    margin-bottom: 0;
+}
+  
+header p {
+    margin-top: 5px;
+    font-weight: bold;
+}
+  
+#hangmanContainer {
+    margin: 20px 0;
+}
+  
+#hangmanImage {
+    width: 200px;
+    height: auto;
+}
+  
+  /* Underscores for the word */
+#wordToGuess {
+    margin: 20px;
+    font-size: 2rem;
+    letter-spacing: 10px;
+}
+  
+  /* 5×6 grid for letters */
+#lettersGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 50px); /* 5 columns */
+    grid-template-rows: repeat(6, 50px);    /* 6 rows   */
+    gap: 10px;
+    justify-content: center;
+    margin: 20px auto;
+}
+  
+.letterBtn {
+    font-size: 1rem;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+}
+  
+.letterBtn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+  
+/* Center the start button */
+#startBtn {
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+  
