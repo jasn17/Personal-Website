@@ -7,7 +7,7 @@
         <link rel="icon" href="img/jasnlogo.png" alt="logo" />
         <link rel="stylesheet" href="../../styles/footer.css">
         <link rel="stylesheet" href="../../styles/navbar.css">
-        <link rel="stylesheet" href="ac.css">
+        <link rel="stylesheet" href="styles.css">
         <title>Official JL</title>
         <link rel="icon" href="../../img/jasnlogo.png" alt="logo" />
         <script type="text/javascript" src="ajax.js"></script>
@@ -23,10 +23,12 @@
                 .catch(error => console.error('Error loading navbar:', error));
         </script>
 
-    <h1>State Capitol Live Search</h1>
-    <p>Type the name of a state:</p>
-    <input type="text" id="search" onkeyup="showCapitols(this.value)" placeholder="Enter state name">
-    <p>Matching Capitol(s): <span id="result"></span></p>
+        <main>
+            <h1>State Capitol Live Search</h1>
+            <label for="search">Type the name of a state:</label>
+            <input type="text" id="search" onkeyup="showCapitols(this.value)" placeholder="Enter state name" autocomplete="off">
+            <div id="result"></div>
+        </main>
 
         
         <div id="footer-container"></div>

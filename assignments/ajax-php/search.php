@@ -61,17 +61,20 @@ $matches = array();
 // Check each state to see if it starts with the query string
 if ($q !== "") {
   foreach ($states as $state => $capital) {
-    // Use stripos to perform a case-insensitive search at the beginning of the string
     if (stripos($state, $q) === 0) {
       $matches[] = $capital;
     }
   }
 }
 
-// Output matching capitols or a message if none were found
+// Output the results as an unordered list of separate items
 if (count($matches) > 0) {
-  echo implode(", ", $matches);
+  echo "<ul>";
+  foreach ($matches as $capitol) {
+    echo "<li>" . htmlspecialchars($capitol) . "</li>";
+  }
+  echo "</ul>";
 } else {
-  echo "No matching capitals found.";
+  echo "<ul><li>No matching capitals found.</li></ul>";
 }
 ?>
