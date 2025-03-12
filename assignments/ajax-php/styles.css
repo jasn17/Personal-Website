@@ -1,0 +1,103 @@
+/* Base styling for a clean and accessible look */
+body {
+    font-family: 'Heebo', 'Arial', Times, serif;
+    margin: 0;
+    padding: 0;
+    background: #F9F6EE;
+    text-align: center;
+    overflow-x: hidden;
+    color: #333;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    min-height: 80vh;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 1.1em;
+}
+
+input[type="text"] {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    margin-bottom: 0;
+}
+
+/* Styling for the results dropdown list */
+#result {
+    width: 100%;
+    max-width: 400px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-top: -1px;
+    overflow: hidden;
+}
+
+/* Unordered list styling */
+#result ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Each list item styling and hover state */
+#result li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+#result li:last-child {
+    border-bottom: none;
+}
+
+#result li:hover {
+    background-color: #f1f1f1;
+}
+
+/* Fade-in animation for the entire result container */
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animate each list item individually */
+#result ul li {
+    opacity: 0;
+    animation: fadeInItem 0.4s forwards;
+}
+
+#result ul li:nth-child(1) { animation-delay: 0.1s; }
+#result ul li:nth-child(2) { animation-delay: 0.2s; }
+#result ul li:nth-child(3) { animation-delay: 0.3s; }
+#result ul li:nth-child(4) { animation-delay: 0.4s; }
+#result ul li:nth-child(5) { animation-delay: 0.5s; }
+#result ul li:nth-child(n+6) { animation-delay: 0.6s; } /* Additional items get a constant delay */
+
+@keyframes fadeInItem {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
