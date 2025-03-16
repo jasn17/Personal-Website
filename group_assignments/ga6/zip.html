@@ -1,0 +1,58 @@
+><!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" href="img/jasnlogo.png" alt="logo" />
+        <link rel="stylesheet" href="../../styles/footer.css">
+        <link rel="stylesheet" href="../../styles/navbar.css">
+        <link rel="stylesheet" href="zip.css">
+        <title>Official JL</title>
+        <link rel="icon" href="../../img/jasnlogo.png" alt="logo" />
+        <script type="text/javascript" src="zip.js"></script>
+    </head>
+    <body>
+        <div id="navbar-container"></div>
+        <script>
+            fetch('../../navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading navbar:', error));
+        </script>
+
+        <main>
+            <h1>ZipDistance Finder</h1>
+            <form id="zipForm">
+                <div>
+                    <label for="zip1">Zip Code 1:</label>
+                    <input type="text" id="zip1" name="zip1" required>
+                </div>
+                <div>
+                    <label for="zip2">Zip Code 2:</label>
+                    <input type="text" id="zip2" name="zip2" required>
+                </div>
+                <div>
+                    <input type="checkbox" id="debug" name="debug">
+                    <label for="debug">Show Debug Info</label>
+                </div>
+                <div>
+                    <button type="submit">Calculate Distance</button>
+                </div>
+            </form>
+            <div id="result"></div>
+        </main>
+
+        <div id="footer-container"></div>
+        <script>
+            fetch('../../footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading footer:', error));
+        </script>
+    </body>
+</html>
