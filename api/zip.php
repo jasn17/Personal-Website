@@ -33,7 +33,7 @@ $zip1 = trim($_POST['zip1']);
 $zip2 = trim($_POST['zip2']);
 
 // Read zip data from the file
-$data_file = 'zipdata.txt';
+$data_file = '../group_assignments/ga6/zipdata.txt';
 if (!file_exists($data_file)) {
     echo "Data file not found.";
     exit;

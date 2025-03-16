@@ -3,9 +3,5 @@
     "api/*.php": {
       "runtime": "vercel-php@0.6.0"
     }
-  },
-  "routes": [
-    { "src": "/(.*)",  "dest": "/group_assignments/ga6/zip.php" },
-    { "src": "/(.*)",  "dest": "/group_assignments/ga5/getWord.php" }
-  ]
+  }
 }
