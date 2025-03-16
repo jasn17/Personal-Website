@@ -1,25 +1,21 @@
 {
+  "version": 2,
   "functions": {
     "api/*.php": {
       "runtime": "vercel-php@0.6.0"
     }
   },
-  "routes": [
+  "headers": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/ga6/?$",
-      "dest": "/group_assignments/ga6/zip.html"
-    },
-    {
-      "src": "/ga6/(.*)",
-      "dest": "/group_assignments/ga6/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/api/(.*.php)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=UTF-8"
+        }
+      ]
     }
-  ]
+  ],
+  "cleanUrls": false,
+  "trailingSlash": false
 }
