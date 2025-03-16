@@ -42,9 +42,8 @@ if (!file_exists($data_file)) {
 $zipData = array();
 if (($handle = fopen($data_file, 'r')) !== false) {
     // Read header line
-    $header = fgetcsv($handle);
-    // Read each line of CSV data
-    while (($row = fgetcsv($handle)) !== false) {
+    $header = fgetcsv($handle, 0, ',', '"', '\\');
+    while (($row = fgetcsv($handle, 0, ',', '"', '\\')) !== false) {
         if (count($row) >= 3) {
             $zip = trim($row[0]);
             $lat = trim($row[1]);
@@ -78,7 +77,7 @@ $distance = haversine_distance($lat1, $lng1, $lat2, $lng2);
 
 // Prepare output
 $output = "<h2>Distance Calculation</h2>";
-$output .= "<p>Distance between $zip1 and $zip2: " . round($distance, 2) . " miles.</p>";
+$output .= "<p>Distance: " . round($distance, 2) . " miles.</p>";
 
 // Display debug information if enabled
 if ($debug) {
