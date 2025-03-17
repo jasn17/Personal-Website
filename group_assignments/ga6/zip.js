@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
       formData.append('zip2', zip2);
       formData.append('debug', debug);
   
-      fetch('../../api/zip/zip.php', {
+      fetch('../../api/zip/index.php', {
         method: 'POST',
         body: formData
       })
