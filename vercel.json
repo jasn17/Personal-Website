@@ -1,7 +1,7 @@
 {
   "version": 2,
   "functions": {
-    "api/zip/index": {
+    "api/zip/**": {
       "runtime": "vercel-php@0.6.0"
     }
   },
