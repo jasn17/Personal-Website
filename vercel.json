@@ -1,12 +1,20 @@
 {
   "version": 2,
   "functions": {
-    "api/zip/index": {
+    "api/zip.php": {
       "runtime": "vercel-php@0.6.0"
     }
   },
-  "rewrites": [
-    { "source": "/api/zip", "destination": "/api/zip/index.php" }
+  "headers": [
+    {
+      "source": "/api/(.*.php)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=UTF-8"
+        }
+      ]
+    }
   ],
   "cleanUrls": false,
   "trailingSlash": false
