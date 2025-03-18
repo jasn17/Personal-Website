@@ -1,8 +1,8 @@
 {
   "version": 2,
   "functions": {
-    "api/zip/index.php": {
-      "runtime": "vercel-php@41.4.1"
+    "api/zip/index": {
+      "runtime": "vercel-php@0.6.0"
     }
   },
   "headers": [
