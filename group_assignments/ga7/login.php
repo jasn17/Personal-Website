@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $validUser = 'admin';
 
     // Hashed password for the user 'admin'
-    $hashedPassword = '$2y$12$8x5SYQ2JXrtjUPcYpjk2OeK0rdyOANeghhGNXc5WCNHDEy7H4M/kW$2y$12$4HMtc5vRywjR5rG.2xxwcOg2VUSyIz5tjPfkYDyn7I5d/9FLFh4Hi';
+    $hashedPassword = '$2y$12$8x5SYQ2JXrtjUPcYpjk2OeK0rdyOANeghhGNXc5WCNHDEy7H4M/kW';
 
     // Verify the username and the hashed password
     if ($username === $validUser && password_verify($password, $hashedPassword)) {
