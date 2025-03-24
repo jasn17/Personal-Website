@@ -1,7 +1,8 @@
-{
-  "functions": {
-    "api/**": {
-      "excludeFiles": "{assignments,group_assignments}/**"
-    }
-  }
-}
+assignments/
+group_assignments/
+img/
+scripts/
+styles/
+navbar.html
+footer.html
+index.html
