@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" href="img/jasnlogo.png" alt="logo" />
+        <link rel="stylesheet" href="../../styles/footer.css">
+        <link rel="stylesheet" href="../../styles/navbar.css">
+        <link rel="stylesheet" href="dmmt.css">
+        <title>DMMT Examples</title>
+        <link rel="icon" href="../../img/jasnlogo.png" alt="logo" />
+    </head>
+    <body>
+        <div id="navbar-container"></div>
+        <script>
+            fetch('../../navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading navbar:', error));
+        </script>
+
+        <main>
+            <h1>DMMT Examples</h1>
+            <!-- BAD EXAMPLES SECTION -->
+            <section id="bad-examples">
+                <h1>Bad Website Examples</h1>
+
+                <article class="example">
+                    <a class="site" href="https://pennyjuiceupdated.neocities.org/" target="_blank">pennyjuiceupdated.com</a>
+                    <p>
+                        This site violates the rules of <strong>encouraging users to muddle through their websites</strong>. 
+                        This site fails to guide the user to the purpose of this website. Ams I here to buy juice? Is this a charity
+                        page for children? Why is the site so naked, is this website even official?
+                    </p>
+                    <iframe src="https://pennyjuiceupdated.neocities.org/" frameborder="0" class="example-frame"></iframe>
+                </article>
+
+                <article class="example">
+                    <a class="site" href="https://www.cameronsworld.net/" target="_blank">cameronsworld.net</a>
+                    <p>
+                        Cameron's world <strong>lacks clear structure and organization</strong>, 
+                        making it difficult for users to understand the content and navigate the site.
+                    </p>
+                    <iframe src="https://www.cameronsworld.net/" frameborder="0" class="example-frame"></iframe>
+                </article>
+
+                <!-- greatdreams.com -->
+                <article class="example">
+                    <a class="site" href="http://www.greatdreams.com/" target="_blank">greatdreams.com</a>
+                    <p>
+                        Great Dreams' website displays <strong>inconsistent design elements</strong> that can confuse users 
+                        and fail to establish a clear purpose for the site. Is this a blog? Or is this suppose to be pure satire?
+                    </p>
+                    <iframe src="http://www.greatdreams.com/" frameborder="0" class="example-frame"></iframe>
+                </article>
+            </section>
+            
+            <!-- GOOD EXAMPLES SECTION -->
+            <section id="good-examples">
+                <h1>Good Website Examples</h1>
+
+                <a class="site" href="https://www.clemson.edu/" target="_blank">clemson.edu</a>
+                <article class="example">
+                    <p>
+                        Clemson University's website demonstrates <strong>clear navigation with a simple, consistent menu structure</strong> 
+                        that makes it easy for users to find information. The users know where they are at and what they are looking for on 
+                        every page.
+                    </p>
+                    <iframe src="https://www.clemson.edu/" frameborder="0" class="example-frame"></iframe>
+                </article>
+
+                <article class="example"></article>
+                    <a class="site" href="https://www.zennioptical.com/" target="_blank">zennioptical.com</a>
+                    <p>
+                        Zennioptical's design of their website made a strong <strong>highly optical</strong> (no pun intented) 
+                        clear and easy to understand. The purpose of this website is to sell glasses and they make it clear 
+                        that is what they are doing.
+                    </p>
+                    <iframe src="https://www.zennioptical.com/" frameborder="0" class="example-frame"></iframe>
+                </article>
+
+                <article class="example">
+                    <a class="site" href="https://neetcode.io/" target="_blank">neetcode.io</a>
+                    <p>
+                        Neetcode's website make it very clear on their intention and the rule of <strong>making users
+                        feel like they are in control</strong>. It's tree structure allows for easy navigation on what
+                        lessons the user would like to learn and they can easily navigate from lesson to lesson.
+                    </p>
+                    <iframe src="https://neetcode.io/" frameborder="0" class="example-frame"></iframe>
+                </article>
+            </section>
+        </main>
+
+        <div id="footer-container"></div>
+        <script>
+            fetch('../../footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading footer:', error));
+        </script>
+    </body>
+</html>
