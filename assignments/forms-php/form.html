@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="img/jasnlogo.png" alt="logo" />
+    <link rel="stylesheet" href="../../styles/footer.css">
+    <link rel="stylesheet" href="../../styles/navbar.css">
+    <link rel="stylesheet" href="form.css">
+    <title>Official JL</title>
+    <link rel="icon" href="../../img/jasnlogo.png" alt="logo" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <script>
+        fetch('../../navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navbar:', error));
+    </script>
+    <h2>Personal Questions</h2>
+        <form id="dataForm" action="save_data.php" method="post">
+        <label for="full_name">Full Name:</label>
+        <input type="text" name="full_name" id="full_name" value=""><br>
+
+        <label for="age">Age:</label>
+        <input type="number" name="age" id="age" value=""><br>
+
+        <label for="gender">Gender:</label>
+        <input type="text" name="gender" id="gender" value=""><br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" value=""><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" name="phone" id="phone" value=""><br>
+
+        <label for="address">Address:</label>
+        <input type="text" name="address" id="address" value=""><br>
+
+        <label for="hobby">Favorite Hobby:</label>
+        <input type="text" name="hobby" id="hobby" value=""><br>
+
+        <label for="food">Favorite Food:</label>
+        <input type="text" name="food" id="food" value=""><br>
+
+        <label for="dream_job">Dream Job:</label>
+        <input type="text" name="dream_job" id="dream_job" value=""><br>
+
+        <label for="fun_fact">Fun Fact about Yourself:</label>
+        <textarea name="fun_fact" id="fun_fact"></textarea><br>
+
+        <input type="submit" value="Save Data">
+        <button type="button" onclick="clearForm();">Clear</button>
+    </form>
+  
+    <button onclick="getData();">Get Data</button>
+  
+    <p>Submit a link to this page on your website: 
+        <a href="http://www.example.com/yourpage" target="_blank">My Website</a>        
+    </p>
+  
+    <div id="footer-container"></div>
+    <script>
+        fetch('../../footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+    </script>
+    <script src="form.js"></script>
+</body>
+</html>

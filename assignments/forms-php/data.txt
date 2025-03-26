@@ -1,0 +1,1 @@
+{"full_name":"bruh man","age":"18","gender":"Male","email":"bruh@yahoo.com","phone":"777-222-3145","address":"728 spiky road","hobby":"basketball","food":"lime","dream_job":"golfer","fun_fact":"I hate clouds"}
