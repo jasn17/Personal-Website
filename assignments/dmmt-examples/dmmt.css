@@ -1,45 +1,102 @@
+/* Updated CSS for DMMT Examples Page with Accessibility & Animations */
+
+/* Base styles */
 body {
     font-family: "Heebo", sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
+    color: #222; /* High contrast for readability */
 }
 
 main {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 20px;
 }
 
 h1, h2, h3 {
     color: #333;
 }
 
+h1 {
+    text-align: center;
+}
+
+/* Section spacing */
 section {
     margin-bottom: 40px;
 }
 
+/* Accessible link styles with hover & focus animations */
+.site {
+    font-size: 1.5em;
+    text-decoration: underline;
+    color: #007acc;
+    transition: color 0.3s ease;
+}
+
+.site:hover,
+.site:focus {
+    color: #005fcc;
+    outline: none;
+}
+
+/* Example article styles with fade-in animation */
 .example {
     margin-bottom: 40px;
     padding-bottom: 20px;
     border-bottom: 1px solid #ccc;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+    /* Optional: Use CSS custom property to delay animations per article */
+    animation-delay: calc(var(--animation-order, 1) * 0.2s);
 }
 
 .example p {
     margin: 10px 0;
 }
 
+/* Iframe styles with smooth hover transitions */
 .example-frame {
     width: 100%;
     height: 500px;
     border: 1px solid #ddd;
     margin-top: 10px;
+    transition: border-color 0.3s ease;
 }
 
-.site {
-    font-size: 1.5em;
-    text-decoration: underline;
+.example-frame:hover,
+.example-frame:focus {
+    border-color: #005fcc;
+    outline: none;
 }
 
-h1 {
-    text-align: center;
+/* Focus styles for interactive elements */
+a:focus, iframe:focus {
+    outline: 3px solid #005fcc;
+}
+
+/* Accessibility: Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .example {
+        animation: none;
+    }
+    .site,
+    .example-frame {
+        transition: none;
+    }
+}
+
+/* Keyframe for fade-in/up animation */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
