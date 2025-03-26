@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Font Awesome CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">    
+        <link rel="icon" href="img/jasnlogo.png" alt="logo" />
+        <link rel="stylesheet" href="../../styles/footer.css">
+        <link rel="stylesheet" href="../../styles/navbar.css">
+        <link rel="stylesheet" href="ac.css">
+        <title>Official JL</title>
+        <link rel="icon" href="../../img/jasnlogo.png" alt="logo" />
+    </head>
+    <body>
+        <div id="navbar-container"></div>
+        <script>
+            fetch('../../navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading navbar:', error));
+        </script>
+        <header>
+            <h1>Audio Player App</h1>
+        </header>
+        <main>
+            <!-- Audio Element and Controls -->
+            <section id="player-controls">
+                <audio id="audio" src="assets/song1.mp3"></audio>
+                <div id="controls">
+                    <button id="rewind"><i class="fa-solid fa-backward"></i></button>
+                    <button id="play-pause"><i class="fa-solid fa-play"></i></button>
+                    <button id="forward"><i class="fa-solid fa-forward"></i></button>
+                </div>
+                <!-- Progress bar container with timer overlay -->
+                <div id="progress-container">
+                    <div id="progress-bar"></div>
+                    <span id="current-time">0:00</span>
+                </div>
+            </section>
+        
+            <!-- Playlist Display -->
+            <section id="playlist">
+                <h2>Playlist</h2>
+                <ul id="titles-list">
+                    <!-- Playlist titles will be inserted here -->
+                </ul>
+            </section>
+        
+            <!-- Playlist Management (Add/Remove Titles) -->
+            <section id="playlist-management">
+                <button id="add-title"><strong>Add Title</strong></button>
+                <button id="remove-title"><strong>Remove Title</strong></button>
+            </section>
+        </main>
+        
+        <div id="footer-container"></div>
+        <script>
+            fetch('../../footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading footer:', error));
+        </script>
+        <script src="ac.js"></script>
+    </body>
+</html>
