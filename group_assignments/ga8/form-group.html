@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" href="img/jasnlogo.png" alt="logo" />
+        <link rel="stylesheet" href="../../styles/footer.css">
+        <link rel="stylesheet" href="../../styles/navbar.css">
+        <link rel="stylesheet" href="form-group.css">
+        <title>Official JL</title>
+        <link rel="icon" href="../../img/jasnlogo.png" alt="logo" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id="navbar-container"></div>
+        <script>
+            fetch('../../navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading navbar:', error));
+        </script>
+        <h1>Form Demo</h1>
+        <h2>Please reference the GitHub to see which box is which</h2>
+        
+        <form action="process.php" method="post" enctype="multipart/form-data">
+            <!-- Section for text input -->
+            <p>
+                <label for="textInput">Text Input:</label>
+                <input type="text" id="textInput" name="textInput">
+            </p>
+        
+            <!-- Section for text area input -->
+            <p>
+                <label for="textareaInput">Textarea Input:</label>
+                <textarea id="textareaInput" name="textareaInput" rows="4" cols="50"></textarea>
+            </p>
+        
+            <!-- Section for hidden data-->
+            <p>
+                <label for="hiddenData">Hidden Data:</label>
+                <input type="hidden" id="hiddenData" name="hiddenData" value="secretValue">
+                <span>(This field is hidden and not visible)</span>
+            </p>
+        
+            <!-- Section for password input-->
+            <p>
+                <label for="passwordInput">Password:</label>
+                <input type="password" id="passwordInput" name="passwordInput">
+            </p>
+        
+            <!-- Section for checkboxes -->
+            <p>
+                <label>Checkboxes:</label><br>
+                <input type="checkbox" name="checkboxes[]" value="Option1" id="checkbox1">
+                <label for="checkbox1">Option 1</label><br>
+                <input type="checkbox" name="checkboxes[]" value="Option2" id="checkbox2">
+                <label for="checkbox2">Option 2</label><br>
+                <input type="checkbox" name="checkboxes[]" value="Option3" id="checkbox3">
+                <label for="checkbox3">Option 3</label>
+            </p>
+        
+            <!-- Section for radio button -->
+            <p>
+                <label>Radio Buttons:</label><br>
+                <input type="radio" name="radioOption" value="Radio1" id="radio1">
+                <label for="radio1">Radio Option 1</label><br>
+                <input type="radio" name="radioOption" value="Radio2" id="radio2">
+                <label for="radio2">Radio Option 2</label><br>
+                <input type="radio" name="radioOption" value="Radio3" id="radio3">
+                <label for="radio3">Radio Option 3</label>
+            </p>
+        
+            <!-- Section for selection list-->
+            <p>
+                <label for="selectInput">Selection List:</label>
+                <select id="selectInput" name="selectInput">
+                    <option value="Select1">Select Option 1</option>
+                    <option value="Select2">Select Option 2</option>
+                    <option value="Select3">Select Option 3</option>
+                </select>
+            </p>
+        
+            <!-- Section for file input-->
+            <p>
+                <label for="fileInput">File Input:</label>
+                <input type="file" id="fileInput" name="fileInput">
+            </p>
+        
+            <!-- Section for url input-->
+            <p>
+                <label for="urlInput">URL Input:</label>
+                <input type="url" id="urlInput" name="urlInput">
+            </p>
+        
+            <!-- Section for submit button -->
+            <p>
+                <input type="submit" value="Submit">
+            </p>
+        </form>
+        
+        <div id="footer-container"></div>
+        <script>
+            fetch('../../footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading footer:', error));
+        </script>
+    </body>
+</html>
