@@ -1,119 +1,140 @@
-body {
-    color: #fff;
-    font-family: 'Heebo', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 0;
-    margin: 0;
+:root {
+  --primary-color: #3256a2;       /* Your theme color */
+  --primary-hover: #2a4f94;       /* Slightly darker shade for hover states */
+  --background-color: #fff;       /* White background */
+  --text-color: #333;             /* Dark gray text */
+  --border-color: #dcdcdc;        /* Input border color */
+  --result-bg: #f8f8f8;           /* Results list background */
+  --result-hover-bg: #eaeaea;     /* Results list hover background */
 }
 
-/* Basic Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Body and font styles */
-  body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
-    padding: 20px;
-  }
-  
-  /* Header styles */
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  header nav a {
-    margin-right: 15px;
-    text-decoration: none;
-    color: #007BFF;
-  }
-  
-  header nav a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Search section */
-  #search-section {
-    margin-bottom: 20px;
-  }
-  
-  #searchInput {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  /* Results section */
-  #results-section {
-    margin-bottom: 20px;
-  }
-  
-  #resultsList {
-    list-style: none;
-  }
-  
-  #resultsList li {
-    background: #fff;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  #resultsList li:hover {
-    background: #eaeaea;
-  }
-  
-  .country-flag {
-    width: 50px;
-    height: auto;
-    margin-right: 15px;
-  }
-  
-  /* Details section */
-  #details-section {
-    background: #fff;
-    padding: 20px;
-    border-radius: 4px;
-    animation: fadeIn 0.5s ease-in-out;
-    position: relative;
-  }
-  
-  #details-section.hidden {
-    display: none;
-  }
-  
-  #closeDetails {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  #closeDetails:hover {
-    background: #0056b3;
-  }
-  
-  /* Animations */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
+/* Body & Container Styling */
+body {
+  font-family: 'Heebo', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 85vh;
+}
+
+/* Heading with animated image fill and thin text border */
+h1 {
+  font-size: 4rem;
+  /* Use the world.jpeg image as a background fill */
+  background: url("world.jpeg") no-repeat;
+  background-size: cover;
+  background-clip: text;
+  -webkit-background-clip: text;
+  /* Make text transparent so the background shows */
+  -webkit-text-fill-color: transparent;
+  /* Add a thin border (stroke) around the text */
+  -webkit-text-stroke: 1px var(--primary-color);
+  margin-bottom: .4em;
+  text-align: center; /* Center the text on the x-axis */
+}
+
+/* Search Section */
+#search-section {
+  margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#searchInput {
+  width: 100%;
+  max-width: 500px; /* Limit the width for better centering */
+  padding: 15px 20px;
+  font-size: 1.2rem;
+  border: 2px solid var(--border-color);
+  border-radius: 24px;
+  transition: box-shadow 0.3s ease;
+}
+
+#searchInput:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(50,86,162, 0.6);
+}
+
+/* Results Section */
+#results-section {
+  margin-top: 20px;
+}
+
+#resultsList {
+  list-style: none;
+  padding: 0;
+}
+
+#resultsList li {
+  background: var(--result-bg);
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#resultsList li:hover {
+  background: var(--result-hover-bg);
+}
+
+.country-flag {
+  width: 50px;
+  height: auto;
+  margin-right: 15px;
+}
+
+/* Details Section (Modal Style) */
+#details-section {
+  background: var(--background-color);
+  padding: 20px;
+  border-radius: 4px;
+  animation: fadeIn 0.5s ease-in-out;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+}
+
+#details-section.hidden {
+  display: none;
+}
+
+#closeDetails {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--primary-color);
+  color: var(--background-color);
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#closeDetails:hover {
+  background: var(--primary-hover);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,6 +1,6 @@
 // api.js
 
-// Replace 'YOUR_API_TOKEN' with your actual API token
+// Replace with your actual API token
 const API_TOKEN = '2376|DZbY784njh70piCtgAISKv0i6XQcypU6rVlhUok8';
 const BASE_URL = 'https://restfulcountries.com/api/v1';
 
@@ -15,21 +15,20 @@ function apiGet(url) {
       'Authorization': `Bearer ${API_TOKEN}`
     }
   })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`API error: ${response.statusText}`);
-    }
-    return response.json();
-  });
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`API error: ${response.statusText}`);
+      }
+      return response.json();
+    });
 }
 
 /**
  * Retrieve a list of countries matching the given name.
- * Supports partial searches.
+ * (Note: For partial search, we are preloading all countries.)
  * @param {string} name - The country name or partial name.
  */
 function getCountryByName(name) {
-  // Construct the URL (assuming the API supports partial name searches)
   const url = `${BASE_URL}/countries/${encodeURIComponent(name)}`;
   return apiGet(url);
 }

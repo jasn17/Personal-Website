@@ -6,37 +6,44 @@ document.addEventListener('DOMContentLoaded', () => {
     const detailsContent = document.getElementById('detailsContent');
     const closeDetails = document.getElementById('closeDetails');
   
+    let allCountries = [];
     let searchTimeout = null;
   
-    // Listen to input changes for partial name search
+    // Preload all countries data (adjust per_page to cover all available countries)
+    getAllCountries(300)
+      .then(response => {
+        // Assume response.data is an array of country objects
+        allCountries = response.data;
+      })
+      .catch(err => {
+        console.error('Error fetching all countries:', err);
+      });
+  
+    // Listen to input changes for partial search
     searchInput.addEventListener('input', (e) => {
-      const query = e.target.value.trim();
+      const query = e.target.value.trim().toLowerCase();
       clearTimeout(searchTimeout);
-      if (query.length === 0) {
-        resultsList.innerHTML = '';
-        return;
-      }
-      // Debounce search for better performance
       searchTimeout = setTimeout(() => {
-        // Call getCountryByName from api.js
-        getCountryByName(query)
-          .then(data => {
-            displayResults(data);
-          })
-          .catch(err => {
-            console.error('Error fetching countries:', err);
-          });
+        if (query.length === 0) {
+          resultsList.innerHTML = '';
+          return;
+        }
+        // Filter allCountries array for partial matches in the country name
+        const filtered = allCountries.filter(country =>
+          country.name.toLowerCase().includes(query)
+        );
+        displayResults(filtered);
       }, 300);
     });
   
     // Display search results in the resultsList
-    function displayResults(countries) {
+    function displayResults(countriesArray) {
       resultsList.innerHTML = '';
-      if (!countries || countries.length === 0) {
+      if (!countriesArray || countriesArray.length === 0) {
         resultsList.innerHTML = '<li>No results found.</li>';
         return;
       }
-      countries.forEach(country => {
+      countriesArray.forEach(country => {
         const li = document.createElement('li');
         li.tabIndex = 0;
         li.innerHTML = `
@@ -51,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
           showCountryDetails(country.name);
         });
         li.addEventListener('keypress', (e) => {
-          if(e.key === 'Enter') {
+          if (e.key === 'Enter') {
             showCountryDetails(country.name);
           }
         });
@@ -61,29 +68,24 @@ document.addEventListener('DOMContentLoaded', () => {
   
     // Show detailed country information
     function showCountryDetails(countryName) {
-      // Use getCountryByName to fetch full details
-      getCountryByName(countryName)
-        .then(response => {
-          const country = response.data || response; // Adjust based on API response structure
-          // Build details content
-          detailsContent.innerHTML = `
-            <h2>${country.name}</h2>
-            <img src="${country.href.flag}" alt="Flag of ${country.name}" class="country-flag">
-            <p><strong>Full Name:</strong> ${country.full_name || 'N/A'}</p>
-            <p><strong>Capital:</strong> ${country.capital || 'N/A'}</p>
-            <p><strong>Currency:</strong> ${country.currency || 'N/A'}</p>
-            <p><strong>Population:</strong> ${country.population || 'N/A'}</p>
-            <p><strong>Size:</strong> ${country.size || 'N/A'}</p>
-            <p><strong>Continent:</strong> ${country.continent || 'N/A'}</p>
-            <p><strong>Description:</strong> ${country.description || 'N/A'}</p>
-            <!-- Add more details as needed -->
-          `;
-          detailsSection.classList.remove('hidden');
-          detailsSection.setAttribute('aria-hidden', 'false');
-        })
-        .catch(err => {
-          console.error('Error fetching country details:', err);
-        });
+      // For the detailed view, find the country from the preloaded data
+      const country = allCountries.find(c => c.name.toLowerCase() === countryName.toLowerCase());
+      if (country) {
+        detailsContent.innerHTML = `
+          <h2>${country.name}</h2>
+          <img src="${country.href.flag}" alt="Flag of ${country.name}" class="country-flag">
+          <p><strong>Nation:</strong> ${country.full_name || 'N/A'}</p>
+          <p><strong>Capital:</strong> ${country.capital || 'N/A'}</p>
+          <p><strong>Currency:</strong> ${country.currency || 'N/A'}</p>
+          <p><strong>Population:</strong> ${country.population || 'N/A'}</p>
+          <p><strong>Size:</strong> ${country.size || 'N/A'}</p>
+          <p><strong>Continent:</strong> ${country.continent || 'N/A'}</p>
+        `;
+        detailsSection.classList.remove('hidden');
+        detailsSection.setAttribute('aria-hidden', 'false');
+      } else {
+        console.error('Country not found for details:', countryName);
+      }
     }
   
     // Close details view
@@ -91,4 +93,5 @@ document.addEventListener('DOMContentLoaded', () => {
       detailsSection.classList.add('hidden');
       detailsSection.setAttribute('aria-hidden', 'true');
     });
-  });  
+  });
+  

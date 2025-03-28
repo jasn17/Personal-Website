@@ -1,42 +1,59 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="icon" href="img/jasnlogo.png" alt="logo" />
-        <link rel="stylesheet" href="../../styles/footer.css">
-        <link rel="stylesheet" href="../../styles/navbar.css">
-        <link rel="stylesheet" href="styles.css">
-        <title>Official JL</title>
-        <link rel="icon" href="../../img/jasnlogo.png" alt="logo" />
-    </head>
-    <body>
-        <h1>Country Explorer</h1>
-        <main>
-            <!-- Search Interface -->
-            <section id="search-section">
-                <input type="text" id="searchInput" placeholder="Search for a country..." aria-label="Search for a country">
-            </section>
-        
-            <!-- Dynamic List of Results -->
-            <section id="results-section">
-                <ul id="resultsList" aria-live="polite">
-                <!-- Search results will be dynamically inserted here -->
-                </ul>
-            </section>
-        
-            <!-- Details Section (hidden by default) -->
-            <section id="details-section" class="hidden" aria-hidden="true">
-                <button id="closeDetails">Close</button>
-                <div id="detailsContent">
-                <!-- Detailed country information will be displayed here -->
-                 
-                </div>
-            </section>
-        </main>
-        
-        <script src="api.js"></script>
-        <script src="app.js"></script>
-    </body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">    
+    <link rel="icon" href="img/jasnlogo.png" alt="logo" />
+    <link rel="stylesheet" href="../../styles/footer.css">
+    <link rel="stylesheet" href="../../styles/navbar.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Official JL</title>
+    <link rel="icon" href="../../img/jasnlogo.png" alt="logo" />
+  </head>
+  <body>
+    <div id="navbar-container"></div>
+        <script>
+            fetch('../../navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading navbar:', error));
+    </script>
+    <div class="container">
+      <h1>Country Explorer</h1>
+      <!-- Search Interface -->
+    <section id="search-section" style="position: relative;">
+      <input type="text" id="searchInput" placeholder="Search for a country..." aria-label="Search for a country" style="width: 100%; padding-right: 40px; padding-left: 40px;" />
+      <i class="fa fa-search" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+    </section>
+      <section id="results-section">
+        <ul id="resultsList" aria-live="polite">
+          <!-- Dynamic search results will be here-->
+        </ul>
+      </section>
+      <!-- Details section -->
+      <section id="details-section" class="hidden" aria-hidden="true">
+        <button id="closeDetails">Close</button>
+        <div id="detailsContent">
+          <!-- Details of country after clicking on content will be here -->
+        </div>
+      </section>
+    </div>    
+    <a href="about.html" style="display: block; text-align: center; margin-top: 20px;">About this api</a>
+    <div id="footer-container"></div>
+        <script>
+            fetch('../../footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading footer:', error));
+    </script>
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+  </body>
 </html>
