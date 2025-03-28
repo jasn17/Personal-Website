@@ -1,15 +1,16 @@
 :root {
-  --primary-color: #3256a2;       /* Your theme color */
-  --primary-hover: #2a4f94;       /* Slightly darker shade for hover states */
-  --background-color: #fff;       /* White background */
-  --text-color: #333;             /* Dark gray text */
-  --border-color: #dcdcdc;        /* Input border color */
-  --result-bg: #f8f8f8;           /* Results list background */
-  --result-hover-bg: #eaeaea;     /* Results list hover background */
+  /* Theme colors */
+  --primary-color: #3256a2;
+  --primary-hover: #2a4f94;
+  --background-color: #fff;
+  --text-color: #333;
+  --border-color: #dcdcdc;
+  --result-bg: #f8f8f8;
+  --result-hover-bg: #eaeaea;
 }
 
-/* Body & Container Styling */
 body {
+  /* Base styling */
   font-family: 'Heebo', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
@@ -18,6 +19,7 @@ body {
 }
 
 .container {
+  /* Center content */
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -26,24 +28,20 @@ body {
   min-height: 80vh;
 }
 
-/* Heading with animated image fill and thin text border */
 h1 {
+  /* Styled heading with image fill */
   font-size: 4rem;
-  /* Use the world.jpeg image as a background fill */
   background: url("world.jpeg") no-repeat;
   background-size: cover;
-  background-clip: text;
   -webkit-background-clip: text;
-  /* Make text transparent so the background shows */
   -webkit-text-fill-color: transparent;
-  /* Add a thin border (stroke) around the text */
   -webkit-text-stroke: 1px var(--primary-color);
   margin-bottom: .4em;
-  text-align: center; /* Center the text on the x-axis */
+  text-align: center;
 }
 
-/* Search Section */
 #search-section {
+  /* Search bar container */
   margin-bottom: 20px;
   position: relative;
   display: flex;
@@ -52,8 +50,9 @@ h1 {
 }
 
 #searchInput {
+  /* Search input field */
   width: 100%;
-  max-width: 500px; /* Limit the width for better centering */
+  max-width: 500px;
   padding: 15px 20px;
   font-size: 1.2rem;
   border: 2px solid var(--border-color);
@@ -62,21 +61,24 @@ h1 {
 }
 
 #searchInput:focus {
+  /* Focus effect */
   outline: none;
   box-shadow: 0 0 5px rgba(50,86,162, 0.6);
 }
 
-/* Results Section */
 #results-section {
+  /* Results container */
   margin-top: 20px;
 }
 
 #resultsList {
+  /* Results list */
   list-style: none;
   padding: 0;
 }
 
 #resultsList li {
+  /* Result item */
   background: var(--result-bg);
   margin-bottom: 10px;
   padding: 10px;
@@ -88,17 +90,19 @@ h1 {
 }
 
 #resultsList li:hover {
+  /* Hover effect */
   background: var(--result-hover-bg);
 }
 
 .country-flag {
+  /* Flag image */
   width: 50px;
   height: auto;
   margin-right: 15px;
 }
 
-/* Details Section (Modal Style) */
 #details-section {
+  /* Modal styling */
   background: var(--background-color);
   padding: 20px;
   border-radius: 4px;
@@ -114,10 +118,12 @@ h1 {
 }
 
 #details-section.hidden {
+  /* Hide modal */
   display: none;
 }
 
 #closeDetails {
+  /* Close button */
   position: absolute;
   top: 10px;
   right: 10px;
@@ -130,11 +136,18 @@ h1 {
 }
 
 #closeDetails:hover {
+  /* Hover effect */
   background: var(--primary-hover);
 }
 
-/* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  /* Fade-in animation */
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
