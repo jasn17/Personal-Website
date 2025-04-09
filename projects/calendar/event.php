@@ -2,98 +2,122 @@
 <html>
 <head>
   <title>Show/Add Events</title>
+  <script>
+    async function fetchEvents() {
+      const response = await fetch('/api/calendar/events');
+      return await response.json();
+    }
+
+    async function addEvent(eventData) {
+      const response = await fetch('/api/calendar/events', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(eventData)
+      });
+      return await response.json();
+    }
+  </script>
+</head>
 <body>
   <h1>Show/Add Events</h1>
   <?php
-  $mysqli = mysqli_connect("localhost", "root", "", "cal");
+  $m = $_GET['m'] ?? $_POST['m'];
+  $d = $_GET['d'] ?? $_POST['d'];
+  $y = $_GET['y'] ?? $_POST['y'];
 
-  //add any new event
-  if ($_POST) {
-	//create database-safe strings
-	$safe_m = mysqli_real_escape_string($mysqli, $_POST['m']);
-	$safe_d = mysqli_real_escape_string($mysqli, $_POST['d']);
-	$safe_y = mysqli_real_escape_string($mysqli, $_POST['y']);
-	$safe_event_title = mysqli_real_escape_string($mysqli, $_POST['event_title']);
-	$safe_event_shortdesc = mysqli_real_escape_string($mysqli, $_POST['event_shortdesc']);
-	$safe_event_time_hh = mysqli_real_escape_string($mysqli, $_POST['event_time_hh']);
-	$safe_event_time_mm = mysqli_real_escape_string($mysqli, $_POST['event_time_mm']);
+  // Fetch events from Edge Config API
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, '/api/calendar/events');
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  $response = curl_exec($ch);
+  curl_close($ch);
 
-	$event_date = $safe_y."-".$safe_m."-".$safe_d." ".$safe_event_time_hh.":".$safe_event_time_mm.":00";
-
-	$insEvent_sql = "INSERT INTO calendar_events (event_title, event_shortdesc, event_start) VALUES('".$safe_event_title."', '".$safe_event_shortdesc."', '".$event_date."')";
-	$insEvent_res = mysqli_query($mysqli, $insEvent_sql) or die(mysqli_error($mysqli));
-
-  } else {
-	//create database-safe strings
-	$safe_m = mysqli_real_escape_string($mysqli, $_GET['m']);
-	$safe_d = mysqli_real_escape_string($mysqli, $_GET['d']);
-	$safe_y = mysqli_real_escape_string($mysqli, $_GET['y']);
+  $events = [];
+  if ($response) {
+    $events = json_decode($response, true);
   }
 
-  //show events for this day
-  $getEvent_sql = "SELECT event_title, event_shortdesc, date_format(event_start, '%l:%i %p') as fmt_date FROM calendar_events WHERE month(event_start) = '".$safe_m."' AND dayofmonth(event_start) = '".$safe_d."' AND year(event_start) = '".$safe_y."' ORDER BY event_start";
-  $getEvent_res = mysqli_query($mysqli, $getEvent_sql) or die(mysqli_error($mysqli));
+  // Filter events for the current date
+  $currentDate = date('Y-m-d', mktime(0, 0, 0, $m, $d, $y));
+  $dayEvents = array_filter($events, function($event) use ($currentDate) {
+    return date('Y-m-d', strtotime($event['start'])) === $currentDate;
+  });
 
-  if (mysqli_num_rows($getEvent_res) > 0) {
-	$event_txt = "<ul>";
-	while ($ev = @mysqli_fetch_array($getEvent_res)) {
-		$event_title = stripslashes($ev['event_title']);
-		$event_shortdesc = stripslashes($ev['event_shortdesc']);
-		$fmt_date = $ev['fmt_date'];
-
-		$event_txt .= "<li><strong>".$fmt_date."</strong>: ".$event_title."<br>".$event_shortdesc."</li>";
-	}
-	$event_txt .= "</ul>";
-	mysqli_free_result($getEvent_res);
-  } else {
-	$event_txt = "";
+  if (!empty($dayEvents)) {
+    echo "<p><strong>Today's Events:</strong></p><ul>";
+    foreach ($dayEvents as $event) {
+      $time = date('g:i A', strtotime($event['start']));
+      echo "<li><strong>{$time}</strong>: " . htmlspecialchars($event['title']) . "<br>" . 
+           htmlspecialchars($event['description']) . "</li>";
+    }
+    echo "</ul><hr>";
   }
 
-  // close connection to MySQL
-  mysqli_close($mysqli);
-
-  if ($event_txt != "") {
-	echo "<p><strong>Today's Events:</strong></p>
-	$event_txt
-	<hr>";
-  }
-
-  // show form for adding an event
+  // Show form for adding an event
   echo <<<END_OF_TEXT
-<form method="post" action="$_SERVER[PHP_SELF]">
+<form method="post" action="$_SERVER[PHP_SELF]" onsubmit="return handleSubmit(event)">
 <p><strong>Would you like to add an event?</strong><br>
 Complete the form below and press the submit button to add the event and refresh this window.</p>
 
 <p><label for="event_title">Event Title:</label><br>
-<input type="text" id="event_title" name="event_title" size="25" maxlength="25"></p>
+<input type="text" id="event_title" name="event_title" size="25" maxlength="25" required></p>
 
 <p><label for="event_shortdesc">Event Description:</label><br>
-<input type="text" id="event_shortdesc" name="event_shortdesc" size="25" maxlength="255"></p>
+<input type="text" id="event_shortdesc" name="event_shortdesc" size="25" maxlength="255" required></p>
 
 <fieldset>
 <legend>Event Time (hh:mm):</legend>
-<select name="event_time_hh">
+<select name="event_time_hh" id="event_time_hh">
 END_OF_TEXT;
 
   for ($x=1; $x <= 24; $x++) {
-  	echo "<option value=\"$x\">$x</option>";
+    echo "<option value=\"$x\">$x</option>";
   }
 
   echo <<<END_OF_TEXT
 </select> :
-<select name="event_time_mm">
+<select name="event_time_mm" id="event_time_mm">
 <option value="00">00</option>
 <option value="15">15</option>
 <option value="30">30</option>
 <option value="45">45</option>
 </select>
 </fieldset>
-<input type="hidden" name="m" value="$safe_m">
-<input type="hidden" name="d" value="$safe_d">
-<input type="hidden" name="y" value="$safe_y">
+<input type="hidden" name="m" value="$m">
+<input type="hidden" name="d" value="$d">
+<input type="hidden" name="y" value="$y">
   
 <button type="submit" name="submit" value="submit">Add Event</button>
 </form>
+
+<script>
+async function handleSubmit(event) {
+  event.preventDefault();
+  
+  const formData = new FormData(event.target);
+  const eventData = {
+    title: formData.get('event_title'),
+    description: formData.get('event_shortdesc'),
+    start: new Date(
+      formData.get('y'),
+      formData.get('m') - 1,
+      formData.get('d'),
+      formData.get('event_time_hh'),
+      formData.get('event_time_mm')
+    ).toISOString()
+  };
+
+  try {
+    await addEvent(eventData);
+    window.location.reload();
+  } catch (error) {
+    console.error('Error adding event:', error);
+    alert('Failed to add event. Please try again.');
+  }
+}
+</script>
 END_OF_TEXT;
   ?>
 </body>

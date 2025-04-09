@@ -11,6 +11,18 @@ if ((!isset($_POST['month'])) || (!isset($_POST['year']))) {
 
 $start = mktime(12, 0, 0, $month, 1, $year);
 $firstDayArray = getdate($start);
+
+// Fetch events from Edge Config API
+$events = [];
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, '/api/calendar/events');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$response = curl_exec($ch);
+curl_close($ch);
+
+if ($response) {
+  $events = json_decode($response, true);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -80,20 +92,13 @@ $firstDayArray = getdate($start);
 		echo "<td>&nbsp;</td>\n";
 		} else {
 			$event_title = "";
-			$mysqli = mysqli_connect("localhost", "root", "", "cal");
-			$chkEvent_sql = "SELECT event_title FROM calendar_events WHERE
-			month(event_start) = '".$month."' AND
-			dayofmonth(event_start) = '".$dayArray['mday']."'
-			AND year(event_start) = '".$year."' ORDER BY event_start";
-			$chkEvent_res = mysqli_query($mysqli, $chkEvent_sql)
-			or die(mysqli_error($mysqli));
-
-			if (mysqli_num_rows($chkEvent_res) > 0) {
-			while ($ev = mysqli_fetch_array($chkEvent_res)) {
-				$event_title .= stripslashes($ev['event_title'])."<br>";
-			}
-			} else {
-			$event_title = "";
+			$currentDate = date('Y-m-d', $start);
+			
+			foreach ($events as $event) {
+				$eventDate = date('Y-m-d', strtotime($event['start']));
+				if ($eventDate === $currentDate) {
+					$event_title .= htmlspecialchars($event['title'])."<br>";
+				}
 			}
 
 			echo "<td><a href=\"javascript:eventWindow('event.php?m=".$month.
@@ -101,14 +106,10 @@ $firstDayArray = getdate($start);
 			<br>".$event_title."</td>\n";
 
 			unset($event_title);
-
 			$start += ADAY;
 		}
 	}
 	echo "</tr></table>";
-
-	//close connection to MySQL
-	mysqli_close($mysqli);
 	?>
 
 	<script type="text/javascript">
