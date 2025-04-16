@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Font Awesome CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">    
+        <link rel="icon" href="img/jasnlogo.png" alt="logo" />
+        <link rel="stylesheet" href="../../styles/footer.css">
+        <link rel="stylesheet" href="../../styles/navbar.css">
+        <link rel="stylesheet" href="styles.css">
+        <title>Official JL</title>
+        <link rel="icon" href="../../img/jasnlogo.png" alt="logo" />
+    </head>
+    <body>
+    <div id="navbar-container"></div>
+    <script>
+        fetch('../../navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navbar:', error));
+    </script>
+    <main style= "min-height: 80vh;">
+        <section id="about-content">
+        <h2>Project Overview</h2>
+        <p>
+            Country Explorer is a collection web application that allows users to search and explore country information using the Restful Countries API.
+        </p>
+        <h3>API Credits</h3>
+        <p>
+            This project uses the Restful Countries API to provide detailed information about countries including their capital, population, size, currency, flag, and more.
+        </p>
+        <p>
+            To access the API, you will need an API key. Please visit the <a href="https://restfulcountries.com/" target="_blank">Restful Countries API Documentation</a> for more details and to obtain your token.
+        </p>
+        <h3>Supported Endpoints</h3>
+        <ul>
+            <li>getAllCountries(per_page)</li>
+            <li>getCountryByName(country)</li>
+            <li>getCountriesByContinent(continent, per_page)</li>
+            <li>getCountriesByPopulation(min, max, per_page)</li>
+            <li>getCountriesBySize(min, max, per_page)</li>
+            <li>getCountryByISO2(iso2) and getCountryByISO3(iso3)</li>
+            <!-- More endpoints can be listed as needed -->
+        </ul>
+        </section>
+    </main>
+    <div id="footer-container"></div>
+    <script>
+        fetch('../../footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+    </script>
+    </body>
+</html>
