@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { title: "Pt.2  - Ye | pt2.mp3", src: "../../group_assignments/ga3/audio/pt2.mp3" },
         { title: "Come To Life - Ye | ctl.mp3", src: "../../group_assignments/ga3/audio/ctl.mp3" },
         { title: "Heaven And Hell - Ye | hnh.mp3", src: "../../group_assignments/ga3/audio/hnh.mp3" },
-        { title: "Street Lights - Ye | st.mp3", src: "../../group_assignments/ga3/audio/st.mp3" }
+        { title: "Street Lights - Ye | st.mp3", src: "../../group_assignments/ga3/audio/sl.mp3" }
     ];
   
     let currentSongIndex = 0;
