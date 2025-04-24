@@ -83,11 +83,17 @@
     font-size: 1.5em;
     color: #f58b57;
     cursor: pointer;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease;
   }
   
   #controls button:hover {
     color: #e67a45;
+    transform: scale(1.1);
+  }
+  
+  #controls button.active {
+    color: #ff6b35;
+    transform: scale(1.1);
   }
   
   /* Progress Bar */

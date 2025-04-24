@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loopButton.addEventListener('click', () => {
         isLooping = !isLooping;
         audio.loop = isLooping;
-        loopButton.style.color = isLooping ? '#f58b57' : '';
+        loopButton.classList.toggle('active', isLooping);
     });
   
     // Example playlist with separate mp3 files
