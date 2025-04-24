@@ -151,4 +151,19 @@
   
   #playlist-management button:hover {
     background-color: #e67a45;
+  }
+  
+  .results-link {
+    display: inline-block;
+    padding: 0.5em 1em;
+    background-color: #f58b57;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 1em;
+    transition: background-color 0.2s ease;
+  }
+  
+  .results-link:hover {
+    background-color: #e67a45;
   }  

@@ -235,4 +235,26 @@
   
   #playlist-management button:hover {
     background-color: var(--primary-hover);
+  }
+  
+  .header-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 1em;
+  }
+  
+  .results-link {
+    display: inline-block;
+    padding: 0.5em 1em;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .results-link:hover {
+    background-color: var(--primary-hover);
   }  
