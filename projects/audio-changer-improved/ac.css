@@ -5,12 +5,38 @@
     box-sizing: border-box;
   }
   
+  /* Theme Variables */
+  :root {
+    --bg-color: #f5f7fa;
+    --text-color: #333;
+    --card-bg: #fff;
+    --border-color: #ddd;
+    --primary-color: #f58b57;
+    --primary-hover: #e67a45;
+    --progress-bg: #ddd;
+    --button-bg: #fafafa;
+    --button-hover: #f0f0f0;
+  }
+  
+  [data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #f5f5f5;
+    --card-bg: #2d2d2d;
+    --border-color: #404040;
+    --primary-color: #ff9b6d;
+    --primary-hover: #ff8a54;
+    --progress-bg: #404040;
+    --button-bg: #3d3d3d;
+    --button-hover: #4d4d4d;
+  }
+  
   /* Body Styling */
   body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    background-color: #f5f7fa;
-    color: #333;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   
   /* Header & Main Container */
@@ -34,12 +60,13 @@
   
   /* Audio Player Controls */
   #player-controls {
-    background-color: #fff;
+    background-color: var(--card-bg);
     padding: 1.5em;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     margin-bottom: 1.5em;
     text-align: center;
+    border: 1px solid var(--border-color);
   }
   
   #controls {
@@ -67,7 +94,7 @@
   #progress-container {
     position: relative;
     height: 1em;
-    background: #ddd;
+    background: var(--progress-bg);
     border-radius: 5px;
     margin: 1.5em 0 0;
     overflow: hidden;
@@ -119,15 +146,15 @@
     padding: 0.75em;
     font-size: 1em;
     text-align: left;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
-    background-color: #fafafa;
+    background-color: var(--button-bg);
     cursor: pointer;
     transition: background-color 0.2s ease, border-color 0.2s ease;
   }
   
   #titles-list button:hover {
-    background-color: #f0f0f0;
+    background-color: var(--button-hover);
     border-color: #ccc;
   }
   
@@ -138,7 +165,7 @@
   }
   
   #playlist-management button {
-    background-color: #f58b57;
+    background-color: var(--primary-color);
     border: none;
     color: #fff;
     padding: 0.75em 1.5em;
@@ -150,5 +177,55 @@
   }
   
   #playlist-management button:hover {
-    background-color: #e67a45;
+    background-color: var(--primary-hover);
+  }
+  
+  /* Theme Toggle Button */
+  #theme-toggle {
+    position: fixed;
+    top: 1em;
+    right: 1em;
+    background: var(--primary-color);
+    border: none;
+    padding: 0.5em;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+  
+  #theme-toggle:hover {
+    transform: scale(1.1);
+  }
+  
+  #theme-toggle i {
+    color: white;
+    font-size: 1.2em;
+  }
+  
+  /* Update existing styles to use CSS variables */
+  #player-controls {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+  }
+  
+  #progress-container {
+    background: var(--progress-bg);
+  }
+  
+  #titles-list button {
+    background-color: var(--button-bg);
+    border: 1px solid var(--border-color);
+  }
+  
+  #titles-list button:hover {
+    background-color: var(--button-hover);
+  }
+  
+  #playlist-management button {
+    background-color: var(--primary-color);
+  }
+  
+  #playlist-management button:hover {
+    background-color: var(--primary-hover);
   }  
