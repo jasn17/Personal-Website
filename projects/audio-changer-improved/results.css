@@ -164,8 +164,28 @@ li::before {
 /* Reflection */
 .reflection-points {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 1fr 1fr;
     gap: 2em;
+}
+
+.reflection-column {
+    background: #f8f9fa;
+    padding: 1.5em;
+    border-radius: 8px;
+    border-top: 4px solid var(--primary-color);
+}
+
+.reflection-column h3 {
+    color: var(--primary-color);
+    margin-bottom: 1em;
+}
+
+.reflection-column ul {
+    margin: 0;
+}
+
+.reflection-column li {
+    margin-bottom: 0.8em;
 }
 
 /* Testing Phase */
@@ -220,6 +240,14 @@ li::before {
 
     h3 {
         font-size: 1.25em;
+    }
+
+    .reflection-points {
+        grid-template-columns: 1fr;
+    }
+    
+    .reflection-column {
+        margin-bottom: 1em;
     }
 }
 
