@@ -27,13 +27,17 @@
             <h1>Audio Player App</h1>
         </header>
         <main>
+            <button id="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
             <!-- Audio Element and Controls -->
             <section id="player-controls">
                 <audio id="audio" src="assets/song1.mp3"></audio>
                 <div id="controls">
-                    <button id="rewind"><i class="fa-solid fa-backward"></i></button>
-                    <button id="play-pause"><i class="fa-solid fa-play"></i></button>
-                    <button id="forward"><i class="fa-solid fa-forward"></i></button>
+                    <button id="rewind" aria-label="Rewind 5 seconds"><i class="fa-solid fa-backward"></i></button>
+                    <button id="play-pause" aria-label="Play/Pause"><i class="fa-solid fa-play"></i></button>
+                    <button id="forward" aria-label="Forward 5 seconds"><i class="fa-solid fa-forward"></i></button>
+                    <button id="loop" aria-label="Toggle loop"><i class="fa-solid fa-repeat"></i></button>
                 </div>
                 <!-- Progress bar container with timer overlay -->
                 <div id="progress-container">
