@@ -38,7 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const request = store.getAll();
 
         request.onsuccess = () => {
-            playlist = request.result;
+            const storedSongs = request.result;
+            // Only add stored songs that aren't already in the playlist
+            storedSongs.forEach(storedSong => {
+                if (!playlist.some(song => song.title === storedSong.title)) {
+                    playlist.push(storedSong);
+                }
+            });
             renderPlaylist();
             if (playlist.length > 0) {
                 loadSong(0);
@@ -87,7 +93,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   
     // Example playlist with separate mp3 files
-    let playlist = [];
+    let playlist = [
+        { title: "Father Stretch My Hand - Ye | fsmh.mp3", src: "../../group_assignments/ga3/audio/fsmh.mp3" },
+        { title: "Pt.2  - Ye | pt2.mp3", src: "../../group_assignments/ga3/audio/pt2.mp3" },
+        { title: "Come To Life - Ye | ctl.mp3", src: "../../group_assignments/ga3/audio/ctl.mp3" },
+        { title: "Heaven And Hell - Ye | hnh.mp3", src: "../../group_assignments/ga3/audio/hnh.mp3" },
+        { title: "Street Lights - Ye | st.mp3", src: "../../group_assignments/ga3/audio/st.mp3" }
+    ];
   
     let currentSongIndex = 0;
   
