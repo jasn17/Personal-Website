@@ -11,6 +11,55 @@ document.addEventListener('DOMContentLoaded', () => {
     const addTitleButton = document.getElementById('add-title');
     const removeTitleButton = document.getElementById('remove-title');
   
+    // Initialize IndexedDB
+    let db;
+    const request = indexedDB.open('AudioPlayerDB', 1);
+
+    request.onerror = (event) => {
+        console.error('Database error:', event.target.error);
+    };
+
+    request.onupgradeneeded = (event) => {
+        const db = event.target.result;
+        if (!db.objectStoreNames.contains('songs')) {
+            db.createObjectStore('songs', { keyPath: 'id', autoIncrement: true });
+        }
+    };
+
+    request.onsuccess = (event) => {
+        db = event.target.result;
+        loadSongsFromDB();
+    };
+
+    // Load songs from IndexedDB
+    function loadSongsFromDB() {
+        const transaction = db.transaction(['songs'], 'readonly');
+        const store = transaction.objectStore('songs');
+        const request = store.getAll();
+
+        request.onsuccess = () => {
+            playlist = request.result;
+            renderPlaylist();
+            if (playlist.length > 0) {
+                loadSong(0);
+            }
+        };
+    }
+
+    // Save song to IndexedDB
+    function saveSongToDB(song) {
+        const transaction = db.transaction(['songs'], 'readwrite');
+        const store = transaction.objectStore('songs');
+        store.add(song);
+    }
+
+    // Delete song from IndexedDB
+    function deleteSongFromDB(id) {
+        const transaction = db.transaction(['songs'], 'readwrite');
+        const store = transaction.objectStore('songs');
+        store.delete(id);
+    }
+
     // Theme handling
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
     let isDarkMode = localStorage.getItem('theme') === 'dark' || 
@@ -38,13 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   
     // Example playlist with separate mp3 files
-    let playlist = [
-        { title: "Father Stretch My Hand - Ye | fsmh.mp3", src: "../../group_assignments/ga3/audio/fsmh.mp3" },
-        { title: "Pt.2  - Ye | pt2.mp3", src: "../../group_assignments/ga3/audio/pt2.mp3" },
-        { title: "Come To Life - Ye | ctl.mp3", src: "../../group_assignments/ga3/audio/ctl.mp3" },
-        { title: "Heaven And Hell - Ye | hnh.mp3", src: "../../group_assignments/ga3/audio/hnh.mp3" },
-        { title: "Street Lights - Ye | st.mp3", src: "../../group_assignments/ga3/audio/st.mp3" }
-    ];
+    let playlist = [];
   
     let currentSongIndex = 0;
   
@@ -145,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
       updatePlayPauseIcon();
     });
   
-    // Improved song addition
+    // Improved song addition with file upload
     addTitleButton.addEventListener('click', () => {
         const form = document.createElement('form');
         form.innerHTML = `
@@ -154,8 +197,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <input type="text" id="song-title" required style="width: 100%; padding: 0.5em; margin: 0.5em 0;">
             </div>
             <div style="margin: 1em 0;">
-                <label for="song-url">MP3 URL:</label>
-                <input type="text" id="song-url" required style="width: 100%; padding: 0.5em; margin: 0.5em 0;">
+                <label for="song-file">MP3 File:</label>
+                <input type="file" id="song-file" accept=".mp3" required style="width: 100%; padding: 0.5em; margin: 0.5em 0;">
             </div>
             <div style="display: flex; justify-content: space-between; margin-top: 1em;">
                 <button type="submit" style="background-color: var(--primary-color); color: white; padding: 0.5em 1em; border: none; border-radius: 4px;">Add Song</button>
@@ -184,11 +227,23 @@ document.addEventListener('DOMContentLoaded', () => {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const title = document.getElementById('song-title').value;
-            const src = document.getElementById('song-url').value;
-            if (title && src) {
-                playlist.splice(currentSongIndex + 1, 0, { title, src });
-                renderPlaylist();
-                document.body.removeChild(dialog);
+            const fileInput = document.getElementById('song-file');
+            const file = fileInput.files[0];
+
+            if (title && file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const song = {
+                        title: title,
+                        src: e.target.result,
+                        id: Date.now() // Unique ID for the song
+                    };
+                    saveSongToDB(song);
+                    playlist.push(song);
+                    renderPlaylist();
+                    document.body.removeChild(dialog);
+                };
+                reader.readAsDataURL(file);
             }
         });
 
@@ -197,23 +252,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
   
-    // Remove the currently playing song from the playlist.
+    // Update remove title functionality to also delete from IndexedDB
     removeTitleButton.addEventListener('click', () => {
-      if (playlist.length === 0) return;
-      // Remove the current song.
-      playlist.splice(currentSongIndex, 1);
-      if (playlist.length === 0) {
-        audio.pause();
-        audio.src = "";
-        currentSongIndex = 0;
-      } else {
-        // If the removed song was not the last, currentSongIndex stays the same.
-        // Otherwise, adjust to the new last song.
-        currentSongIndex = Math.min(currentSongIndex, playlist.length - 1);
-        loadSong(currentSongIndex);
-        audio.play();
-      }
-      renderPlaylist();
+        if (playlist.length === 0) return;
+        
+        const songToRemove = playlist[currentSongIndex];
+        deleteSongFromDB(songToRemove.id);
+        
+        playlist.splice(currentSongIndex, 1);
+        if (playlist.length === 0) {
+            audio.pause();
+            audio.src = "";
+            currentSongIndex = 0;
+        } else {
+            currentSongIndex = Math.min(currentSongIndex, playlist.length - 1);
+            loadSong(currentSongIndex);
+            audio.play();
+        }
+        renderPlaylist();
     });
   
     // Initialize the playlist display and load the first song (if available)
