@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="results.css">
+    <link rel="stylesheet" href="../../styles/navbar.css">
+    <link rel="stylesheet" href="../../styles/footer.css">
+    <title>Usability Test Results - Audio Player App</title>
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <script>
+        fetch('../../navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navbar:', error));
+    </script>
+
+    <main>
+        <header>
+            <h1>Audio Player App - Usability Test Results</h1>
+            <div class="author-info">
+                <p>Jason Lin</p>
+                <p>CPSC 3750</p>
+                <p>Dr. Wooster</p>
+            </div>
+        </header>
+
+        <section id="assignment-goal">
+            <h2>Assignment Goal</h2>
+            <p>Using the concepts from DMMT Chapter 9 and the Steve Krug Usability Testing video, perform a usability test on one of my existing web app projects, summarize your findings, make improvements, and document the process on your website.</p>
+        </section>
+
+        <section id="test-details">
+            <h2>Test Details</h2>
+            <div class="test-info-grid">
+                <div class="info-item">
+                    <h3>Test Date</h3>
+                    <p>04/23/2025</p>
+                </div>
+                <div class="info-item">
+                    <h3>Location</h3>
+                    <p>At home, in a neutral, air-conditioned living room (MacBook on table, neutral chair)</p>
+                </div>
+                <div class="info-item">
+                    <h3>Test User</h3>
+                    <p>Computer science major at Clemson University with interest in music, coding, and science fiction.</p>
+                </div>
+                <div class="info-item">
+                    <h3>Recording Method</h3>
+                    <p>Paper and pencil documentation of user actions and feedback</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="testing-phase">
+            <h2>Testing Phase</h2>
+            <p>I have welcomed my roommate and briefed them generally what this assignment was about and to not be biased during this test. The test will be conducted on my Macbook.</p>
+            <p>I opened the audio player app and let him look around without clicking anything.</p>
+            <p>Then I assign 3 tasks for him to do:</p>
+            <ul>
+                <li>Play a song</li>
+                <li>Pause a song</li>
+                <li>Skip forward and back on a song</li>
+                <li>Play a Specific Song</li>
+                <li>Add a new song</li>
+            </ul>
+            <div class="user-actions">
+                <h3>User's Actions During the Test:</h3>
+                <p>User scrolled around looking at the item, first clicking through all of the songs, listening to each song for a couple of seconds, he manages to pause the song ✅ and unpause the song again ✅.</p>
+                <p>He like Street Lights the most so he clicked on the song and fast forwarded with the right arrow until the chorus ✅ as well as revert 5 seconds using the left arrow ✅. He says "this is pretty cool".</p>
+                <img src="img/1.png" alt="pic1">
+                <p>User scrolled to the navbar and clicked a random assignment, I told him to focus on the study, and I made him come back to the app. He looks at the corners of the app to find hidden features. User then clicks on the song Heaven and Hell and removes the song ✅.</p>
+                <p>The user asked if that was all the tasks, I told him his last task was to add a song that I prepared in the downloads folder. He made a random title and was confused how to actually add the song working with the directory. I had to interject and tell him that you had to add the song in the directory first before referencing it ✅. This is where I saw a great area for improvement.</p>
+                <img src="img/2.png" alt="pic2">
+            </div>
+        </section>
+
+        <section id="app-versions">
+            <h2>App Versions</h2>
+            <div class="version-comparison">
+                <div class="version original">
+                    <h3>Original Version</h3>
+                    <a href="https://www.officialjasonlin.com/projects/audio-changer/ac.html" target="_blank" class="app-link">View Original App</a>
+                    <div class="video-container">
+                        <iframe src="https://www.loom.com/embed/56fe475f063a4a1193f6e7eea2a5612b?sid=91e2c5c8-6a17-4ebf-a836-185b500f73e6" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="version improved">
+                    <h3>Improved Version</h3>
+                    <a href="https://www.officialjasonlin.com/projects/audio-changer-improved/ac.html" target="_blank" class="app-link">View Improved App</a>
+                    <div class="video-container">
+                        <iframe src="https://www.loom.com/embed/f49fd6da125b4b72b41a9e4cc274ddbc?sid=7beaa06e-9a08-4c51-9b5c-499cf2f5d1b4" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testing-process">
+            <h2>Testing Process</h2>
+            <div class="test-tasks">
+                <h3>Tasks Assigned:</h3>
+                <ul>
+                    <li>Play a song</li>
+                    <li>Pause a song</li>
+                    <li>Skip forward and back on a song</li>
+                    <li>Play a specific song</li>
+                    <li>Add a new song</li>
+                </ul>
+            </div>
+            <div class="test-observations">
+                <h3>User Actions & Observations:</h3>
+                <ul>
+                    <li>✅ Successfully played and paused songs</li>
+                    <li>✅ Effectively used forward/backward controls</li>
+                    <li>✅ Navigated playlist and selected specific songs</li>
+                    <li>✅ Removed a song from playlist</li>
+                    <li>❗ Struggled with the song addition process (directory reference required)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="improvements">
+            <h2>Improvements Made</h2>
+            <div class="improvements-grid">
+                <div class="improvement-item">
+                    <h3>Dark Mode Toggle</h3>
+                    <ul>
+                        <li>Added theme toggle button in header</li>
+                        <li>Smooth transition between modes</li>
+                    </ul>
+                    <img src="img/3.png" alt="pic3">
+                </div>
+                <div class="improvement-item">
+                    <h3>Loop Button Enhancement</h3>
+                    <ul>
+                        <li>Visual feedback for active state</li>
+                        <li>Scale animation and color change</li>
+                    </ul>
+                    <img src="img/4.png" alt="pic4">
+                </div>
+                <div class="improvement-item">
+                    <h3>Local File Upload</h3>
+                    <ul>
+                        <li>Direct MP3 file upload</li>
+                        <li>Replaced URL-based addition</li>
+                        <li>Persistent storage</li>
+                    </ul>
+                    <img src="img/5.png" alt="pic5">
+                </div>
+                <div class="improvement-item">
+                    <h3>UI Improvements</h3>
+                    <ul>
+                        <li>Maintained clean design</li>
+                        <li>Enhanced visual feedback</li>
+                        <li>Improved user interaction</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="reflection">
+            <h2>Reflection</h2>
+            <div class="reflection-points">
+                <h3>Pain Points Identified:</h3>
+                <ul>
+                    <li>Lack of dark mode option</li>
+                    <li>Complicated song addition process</li>
+                    <li>Missing loop functionality</li>
+                </ul>
+                <h3>Successes:</h3>
+                <ul>
+                    <li>Clear purpose communication</li>
+                    <li>Passed trunk test</li>
+                    <li>Achieved core functionality</li>
+                    <li>Comfortable user experience</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-container"></div>
+    <script>
+        fetch('../../footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+    </script>
+</body>
+</html>

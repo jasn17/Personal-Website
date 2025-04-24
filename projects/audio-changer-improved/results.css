@@ -1,0 +1,235 @@
+/* General Styles */
+:root {
+    --primary-color: #f58b57;
+    --secondary-color: #e67a45;
+    --text-color: #333;
+    --bg-color: #f5f7fa;
+    --card-bg: #fff;
+    --border-color: #ddd;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2em auto;
+    padding: 0 2em;
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    margin-bottom: 3em;
+    padding-bottom: 1em;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.author-info {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    margin-top: 1em;
+}
+
+/* Section Styles */
+section {
+    margin-bottom: 4em;
+    padding: 2em;
+    background: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+    color: var(--text-color);
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 1em;
+    color: var(--primary-color);
+}
+
+h3 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+/* Test Info Grid */
+.test-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2em;
+}
+
+.info-item {
+    padding: 1em;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Version Comparison */
+.version-comparison {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2em;
+}
+
+.version {
+    text-align: center;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    margin: 1em 0;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.app-link {
+    display: inline-block;
+    padding: 0.5em 1em;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 1em 0;
+    transition: background-color 0.2s ease;
+}
+
+.app-link:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Testing Process */
+.test-tasks, .test-observations {
+    margin-bottom: 2em;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li {
+    margin-bottom: 0.5em;
+    padding-left: 1.5em;
+    position: relative;
+}
+
+li::before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+}
+
+/* Improvements Grid */
+.improvements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2em;
+}
+
+.improvement-item {
+    padding: 1.5em;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-top: 4px solid var(--primary-color);
+}
+
+/* Reflection */
+.reflection-points {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2em;
+}
+
+/* Testing Phase */
+#testing-phase p {
+    margin-bottom: 1em;
+    line-height: 1.8;
+}
+
+#testing-phase ul {
+    margin: 1.5em 0;
+}
+
+.user-actions {
+    background: #f8f9fa;
+    padding: 1.5em;
+    border-radius: 8px;
+    margin-top: 2em;
+    border-left: 4px solid var(--primary-color);
+}
+
+.user-actions h3 {
+    color: var(--primary-color);
+    margin-bottom: 1em;
+}
+
+.user-actions p {
+    margin-bottom: 1em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main {
+        padding: 0 1em;
+    }
+
+    .author-info {
+        flex-direction: column;
+        gap: 0.5em;
+    }
+
+    section {
+        padding: 1em;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.75em;
+    }
+
+    h3 {
+        font-size: 1.25em;
+    }
+}
+
+/* Success and Warning Indicators */
+li:has(✅)::before {
+    content: "✅";
+    color: #28a745;
+}
+
+li:has(❗)::before {
+    content: "❗";
+    color: #dc3545;
+}
