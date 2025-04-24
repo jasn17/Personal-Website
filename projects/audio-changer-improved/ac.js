@@ -3,11 +3,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const playPauseButton = document.getElementById('play-pause');
     const rewindButton = document.getElementById('rewind');
     const forwardButton = document.getElementById('forward');
+    const loopButton = document.getElementById('loop');
+    const themeToggle = document.getElementById('theme-toggle');
     const currentTimeDisplay = document.getElementById('current-time');
     const progressBar = document.getElementById('progress-bar');
     const titlesList = document.getElementById('titles-list');
     const addTitleButton = document.getElementById('add-title');
     const removeTitleButton = document.getElementById('remove-title');
+  
+    // Theme handling
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    let isDarkMode = localStorage.getItem('theme') === 'dark' || 
+                    (localStorage.getItem('theme') === null && prefersDarkScheme.matches);
+
+    function setTheme(isDark) {
+        document.body.setAttribute('data-theme', isDark ? 'dark' : 'light');
+        themeToggle.innerHTML = `<i class="fas fa-${isDark ? 'sun' : 'moon'}"></i>`;
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    themeToggle.addEventListener('click', () => {
+        isDarkMode = !isDarkMode;
+        setTheme(isDarkMode);
+    });
+
+    setTheme(isDarkMode);
+
+    // Loop functionality
+    let isLooping = false;
+    loopButton.addEventListener('click', () => {
+        isLooping = !isLooping;
+        audio.loop = isLooping;
+        loopButton.style.color = isLooping ? '#f58b57' : '';
+    });
   
     // Example playlist with separate mp3 files
     let playlist = [
@@ -117,14 +145,56 @@ document.addEventListener('DOMContentLoaded', () => {
       updatePlayPauseIcon();
     });
   
-    // Add a new song into the playlist after the currently playing song.
+    // Improved song addition
     addTitleButton.addEventListener('click', () => {
-      const titleName = prompt("Enter the new song title (Ex: Example Music - Example Artist | example.mp3):");
-      const src = prompt("Enter the URL or path for the mp3 file (Ex: ../../group_assignments/ga3/audio/xxx.mp3):");
-      if (!titleName || !src) return;
-      // Insert the new song immediately after the current song.
-      playlist.splice(currentSongIndex + 1, 0, { title: titleName, src: src });
-      renderPlaylist();
+        const form = document.createElement('form');
+        form.innerHTML = `
+            <div style="margin: 1em 0;">
+                <label for="song-title">Song Title:</label>
+                <input type="text" id="song-title" required style="width: 100%; padding: 0.5em; margin: 0.5em 0;">
+            </div>
+            <div style="margin: 1em 0;">
+                <label for="song-url">MP3 URL:</label>
+                <input type="text" id="song-url" required style="width: 100%; padding: 0.5em; margin: 0.5em 0;">
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-top: 1em;">
+                <button type="submit" style="background-color: var(--primary-color); color: white; padding: 0.5em 1em; border: none; border-radius: 4px;">Add Song</button>
+                <button type="button" id="cancel-add" style="background-color: #666; color: white; padding: 0.5em 1em; border: none; border-radius: 4px;">Cancel</button>
+            </div>
+        `;
+
+        const dialog = document.createElement('div');
+        dialog.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--card-bg);
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            width: 80%;
+            max-width: 400px;
+        `;
+
+        dialog.appendChild(form);
+        document.body.appendChild(dialog);
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const title = document.getElementById('song-title').value;
+            const src = document.getElementById('song-url').value;
+            if (title && src) {
+                playlist.splice(currentSongIndex + 1, 0, { title, src });
+                renderPlaylist();
+                document.body.removeChild(dialog);
+            }
+        });
+
+        document.getElementById('cancel-add').addEventListener('click', () => {
+            document.body.removeChild(dialog);
+        });
     });
   
     // Remove the currently playing song from the playlist.
