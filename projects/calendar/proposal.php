@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Team Project Proposal – CPSC 3750</title>
+    <link rel="stylesheet" href="navbar.css" type="text/css">
+    <link rel="stylesheet" href="sidebar.css" type="text/css">
+    <link rel="stylesheet" href="proposal.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
 /* Global Styles */
 body {
@@ -51,16 +55,27 @@ td {
     width: 100px;
 }
     </style>
+    
 </head>
 <body>
-
+<div id="navbar"></div>
+    <script>document.addEventListener('DOMContentLoaded', () => {
+     fetch('navbar.html')
+         .then(response => response.text())
+         .then(data => {
+             document.getElementById('navbar').innerHTML = data;
+         });
+ });</script>
     <h1>Team Project Proposal</h1>
     <h2>CPSC 3750 – Web App Development</h2>
-    <div>
-      <a href="about.html" title="About the team">About the Team</a>
-      <a href="proposal.php" title="Proposal for the final">Proposal for the final</a>
-      <a href="showcalendar_withevent.php" title="Calendar">Calendar</a>
-    </div>
+    
+    <nav class="proposal-nav">
+        <a href="about.html" title="About the team"><i class="fas fa-users"></i> About the Team</a>
+        <a href="proposal.php" title="Proposal for the final" class="active"><i class="fas fa-file-alt"></i> Proposal</a>
+        <a href="showcalendar_withevent.php" title="Calendar"><i class="fas fa-calendar-alt"></i> Calendar</a>
+        <a href="exampleAcc.html" title="Login User"><i class="fas fa-lock"></i> Instructor</a>
+        <a href="features.html" title="Features"><i class="fas fa-cog"></i> Features</a>
+    </nav>
     <div class="section">
         <h3>Team Members</h3>
         <ul>
